@@ -3,36 +3,81 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>競馬穴馬予測レポート</title>
+<title>穴予測AI | 芝1200</title>
 <style>
-  body { background: #1a1a2e; color: #e0e0e0; font-family: 'Helvetica Neue', sans-serif; margin: 0; padding: 20px; }
-  h1 { color: #f0c040; text-align: center; margin-bottom: 8px; font-size: 1.5em; }
-  p.sub { text-align: center; color: #888; font-size: 0.85em; margin-bottom: 30px; }
-  .list { max-width: 500px; margin: 0 auto; }
-  .item { background: #16213e; border: 1px solid #2a3a5e; border-radius: 8px; margin-bottom: 10px; }
-  .item a { display: block; padding: 14px 20px; color: #7ec8e3; text-decoration: none; font-size: 1.05em; }
-  .item a:hover { background: #0f3460; border-radius: 8px; color: #f0c040; }
-  .date-label { font-weight: bold; }
-  .weekday { color: #aaa; font-size: 0.9em; margin-left: 8px; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, 'Hiragino Sans', 'Helvetica Neue', sans-serif;
+  background: #fff;
+  color: #111;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 20px 16px 48px;
+  line-height: 1.6;
+}
+.site-header {
+  border-bottom: 2px solid #111;
+  padding-bottom: 12px;
+  margin-bottom: 6px;
+}
+.site-title { font-size: 20px; font-weight: 800; letter-spacing: .04em; }
+.site-title span { color: #c00; }
+.site-sub { font-size: 13px; color: #555; margin-top: 2px; }
+.disclaimer {
+  font-size: 11px; color: #aaa;
+  margin: 10px 0 28px;
+  padding: 8px 10px;
+  border: 1px solid #e8e8e8;
+  border-radius: 4px;
+  line-height: 1.5;
+}
+h2 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 12px;
+  letter-spacing: .05em;
+}
+.report-list { list-style: none; }
+.report-item {
+  border-bottom: 1px solid #f0f0f0;
+}
+.report-item:last-child { border-bottom: none; }
+.report-item a {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 12px 4px;
+  color: #111;
+  text-decoration: none;
+}
+.report-item a:hover { background: #fafafa; }
+.report-date { font-size: 16px; font-weight: 700; }
+.report-day { font-size: 12px; color: #aaa; }
+.report-arrow { font-size: 12px; color: #bbb; margin-left: auto; }
 </style>
 </head>
 <body>
-<h1>競馬穴馬予測レポート</h1>
-<p class="sub">福島・小倉 芝1200 穴馬推奨（自動生成）</p>
-<div class="list">
-  <div class="item"><a href="result_20260722.html"><span class="date-label">2026-07-22</span><span class="weekday">水</span></a></div>
-  <div class="item"><a href="result_20260721.html"><span class="date-label">2026-07-21</span><span class="weekday">火</span></a></div>
-  <div class="item"><a href="result_20260719.html"><span class="date-label">2026-07-19</span><span class="weekday">日</span></a></div>
-  <div class="item"><a href="result_20260718.html"><span class="date-label">2026-07-18</span><span class="weekday">土</span></a></div>
-  <div class="item"><a href="result_20260717.html"><span class="date-label">2026-07-17</span><span class="weekday">金</span></a></div>
-  <div class="item"><a href="result_20260716.html"><span class="date-label">2026-07-16</span><span class="weekday">木</span></a></div>
-  <div class="item"><a href="result_20260714.html"><span class="date-label">2026-07-14</span><span class="weekday">月</span></a></div>
-  <div class="item"><a href="result_20260712.html"><span class="date-label">2026-07-12</span><span class="weekday">土</span></a></div>
-  <div class="item"><a href="result_20260705.html"><span class="date-label">2026-07-05</span><span class="weekday">日</span></a></div>
-  <div class="item"><a href="result_20260704.html"><span class="date-label">2026-07-04</span><span class="weekday">土</span></a></div>
-  <div class="item"><a href="result_20260630.html"><span class="date-label">2026-06-30</span><span class="weekday">火</span></a></div>
-  <div class="item"><a href="result_20260629.html"><span class="date-label">2026-06-29</span><span class="weekday">月</span></a></div>
-  <div class="item"><a href="result_20260628.html"><span class="date-label">2026-06-28</span><span class="weekday">日</span></a></div>
-</div>
+<header class="site-header">
+  <div class="site-title">穴予測<span>AI</span></div>
+  <div class="site-sub">福島・小倉 芝1200 穴馬推奨レポート</div>
+</header>
+<p class="disclaimer">※本レポートは統計的分析に基づく参考情報です。投資助言ではありません。馬券購入は自己責任でお願いします。</p>
+<h2>レポート一覧</h2>
+<ul class="report-list">
+  <li class="report-item"><a href="result_20260722.html"><span class="report-date">2026-07-22</span><span class="report-day">火</span><span class="report-arrow">›</span></a></li>
+  <li class="report-item"><a href="result_20260721.html"><span class="report-date">2026-07-21</span><span class="report-day">月</span><span class="report-arrow">›</span></a></li>
+  <li class="report-item"><a href="result_20260719.html"><span class="report-date">2026-07-19</span><span class="report-day">土</span><span class="report-arrow">›</span></a></li>
+  <li class="report-item"><a href="result_20260718.html"><span class="report-date">2026-07-18</span><span class="report-day">金</span><span class="report-arrow">›</span></a></li>
+  <li class="report-item"><a href="result_20260717.html"><span class="report-date">2026-07-17</span><span class="report-day">木</span><span class="report-arrow">›</span></a></li>
+  <li class="report-item"><a href="result_20260716.html"><span class="report-date">2026-07-16</span><span class="report-day">水</span><span class="report-arrow">›</span></a></li>
+  <li class="report-item"><a href="result_20260714.html"><span class="report-date">2026-07-14</span><span class="report-day">月</span><span class="report-arrow">›</span></a></li>
+  <li class="report-item"><a href="result_20260712.html"><span class="report-date">2026-07-12</span><span class="report-day">土</span><span class="report-arrow">›</span></a></li>
+  <li class="report-item"><a href="result_20260705.html"><span class="report-date">2026-07-05</span><span class="report-day">日</span><span class="report-arrow">›</span></a></li>
+  <li class="report-item"><a href="result_20260704.html"><span class="report-date">2026-07-04</span><span class="report-day">土</span><span class="report-arrow">›</span></a></li>
+  <li class="report-item"><a href="result_20260630.html"><span class="report-date">2026-06-30</span><span class="report-day">月</span><span class="report-arrow">›</span></a></li>
+  <li class="report-item"><a href="result_20260629.html"><span class="report-date">2026-06-29</span><span class="report-day">日</span><span class="report-arrow">›</span></a></li>
+  <li class="report-item"><a href="result_20260628.html"><span class="report-date">2026-06-28</span><span class="report-day">土</span><span class="report-arrow">›</span></a></li>
+</ul>
 </body>
 </html>
