@@ -1,0 +1,1471 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>南関東 ヤラズ判定 20260724</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Helvetica Neue',Arial,sans-serif;background:#f7f7f7;color:#222;font-size:14px}
+.wrap{max-width:860px;margin:0 auto;padding:12px}
+h1{font-size:17px;font-weight:700;margin-bottom:12px;color:#111}
+.race-block{background:#fff;border:1px solid #ddd;border-radius:6px;margin-bottom:18px;overflow:hidden}
+.race-header{background:#1a1a2e;color:#fff;padding:8px 12px;font-size:13px;font-weight:700}
+.horse-row{border-bottom:1px solid #eee;padding:10px 12px}
+.horse-row:last-child{border-bottom:none}
+.horse-name{font-size:15px;font-weight:700;margin-bottom:4px}
+.horse-sub{font-size:12px;color:#666;margin-bottom:6px}
+.pt-bar-wrap{margin:5px 0 3px}
+.pt-bar-label{font-size:12px;color:#444;margin-bottom:2px}
+.pt-bar-outer{height:10px;background:#e0e0e0;border-radius:5px;overflow:hidden;width:100%;max-width:340px}
+.pt-bar-inner{height:10px;border-radius:5px;transition:width 0.3s}
+.bar-safe{background:#4caf50}
+.bar-warn{background:#ff9800}
+.bar-reach{background:#f44336}
+.pt-ranks{font-size:12px;color:#555;margin:4px 0}
+.pt-rank-item{display:inline-block;margin-right:8px}
+.pt-rank-item.breakthrough{color:#f44336;font-weight:700}
+.badges{margin-top:5px;display:flex;flex-wrap:wrap;gap:5px}
+.badge{display:inline-block;padding:2px 8px;border-radius:12px;font-size:11px;font-weight:700}
+.badge-reach{background:#f44336;color:#fff}
+.badge-reach-warn{background:#ff9800;color:#fff}
+.badge-yaradzu{background:#b71c1c;color:#fff}
+.badge-in{background:#1565c0;color:#fff}
+.badge-bio{background:#f9a825;color:#333}
+.badge-line{background:#2e7d32;color:#fff}
+.badge-yaradzu-ake{background:#1b5e20;color:#fff}
+.badge-kuzure{background:#e65100;color:#fff}
+.race-pt-row{padding:5px 12px;font-size:11px;color:#888;background:#f9f9f9;border-bottom:1px solid #eee}
+/* フィルタ・強調 */
+.race-block.skip{opacity:0.45;border-color:#ccc}
+.race-block.skip .race-header{background:#888}
+.race-skip-bar{padding:6px 12px;font-size:12px;color:#888;background:#f4f4f4;border-bottom:1px solid #e0e0e0;display:flex;align-items:center;gap:6px}
+.race-skip-bar .skip-label{font-weight:700}
+.race-skip-bar .skip-reason{font-size:11px}
+.race-block.honsen .race-header{background:#1a3a6b}
+.race-block.daini .race-header{background:#2e5c1e}
+.race-emphasis-bar{padding:5px 12px;font-size:12px;font-weight:700;border-bottom:1px solid #ddd}
+.race-emphasis-bar.honsen{background:#e8f0ff;color:#1a3a6b}
+.race-emphasis-bar.daini{background:#eaf5e8;color:#2e5c1e}
+.badge-honsen{background:#1a3a6b;color:#fff}
+.badge-daini{background:#2e5c1e;color:#fff}
+.footer{text-align:center;color:#aaa;font-size:11px;margin-top:20px;padding-bottom:20px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>南関東 ヤラズ判定レポート 20260724</h1>
+<div style="background:#fff;border:1px solid #ddd;border-radius:6px;padding:10px 14px;margin-bottom:16px;font-size:13px;">本日 <b>12レース</b> 中 <b style="color:#1a3a6b">4レース(33%)が買い対象</b> / 見送り8レース</div><div class="race-block skip">
+<div class="race-header">C3一 出馬表 | 2026年7月24日 大井1R 地方競馬レース情報 - netkeiba (1800m C3 15頭)</div>
+<div class="race-skip-bar"><span class="skip-label">🚫 見送り</span><span class="skip-reason">C3=ヤラズ勢多数/頭打ち馬多い</span></div><div class="race-pt-row">付与ポイント: 1着+80pt / 2着+32pt / 3着+20pt / 4着+12pt / 5着+8pt</div>
+<div class="horse-row">
+<div class="horse-name">1番&nbsp; <a href="https://db.netkeiba.com/horse/2018103497" target="_blank" style="color:inherit;text-decoration:none">ミチノシチリア</a></div>
+<div class="horse-sub">牡8歳  格:C3</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C3 1179pt → C2ライン:1200pt
+     (あと21pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-reach" style="width:98%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+80→昇級!</span><span class="pt-rank-item breakthrough">2着+32→昇級!</span><span class="pt-rank-item">3着+20</span><span class="pt-rank-item">4着+12</span><span class="pt-rank-item">5着+8</span></div>
+<div class="badges"><span class="badge badge-reach-warn">⚠リーチ圏(あと21pt)</span><span class="badge badge-yaradzu-ake">🟢ヤラズ明け穴 ×4回(100%)/複勝14.6%</span><span class="badge badge-in">イン差し(58%)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">2番&nbsp; <a href="https://db.netkeiba.com/horse/2021100587" target="_blank" style="color:inherit;text-decoration:none">ケイリュウオー</a></div>
+<div class="horse-sub">牡5歳  格:C3</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C3 466pt → C2ライン:500pt
+     (あと34pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:93%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+80→昇級!</span><span class="pt-rank-item">2着+32</span><span class="pt-rank-item">3着+20</span><span class="pt-rank-item">4着+12</span><span class="pt-rank-item">5着+8</span></div>
+<div class="badges"><span class="badge badge-reach-warn">⚠リーチ圏(あと34pt)</span><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">3番&nbsp; <a href="https://db.netkeiba.com/horse/2018103788" target="_blank" style="color:inherit;text-decoration:none">ウォーバックス</a></div>
+<div class="horse-sub">セ8歳  格:C3</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C3 846pt → C2ライン:1200pt
+     (あと354pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:70%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+80</span><span class="pt-rank-item">2着+32</span><span class="pt-rank-item">3着+20</span><span class="pt-rank-item">4着+12</span><span class="pt-rank-item">5着+8</span></div>
+<div class="badges"><span class="badge badge-in">イン差し(57%)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">4番&nbsp; <a href="https://db.netkeiba.com/horse/2020106948" target="_blank" style="color:inherit;text-decoration:none">トップダイヤ</a></div>
+<div class="horse-sub">セ6歳  格:C2</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C2 803pt → C1ライン:1100pt
+     (あと297pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:73%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+80</span><span class="pt-rank-item">2着+32</span><span class="pt-rank-item">3着+20</span><span class="pt-rank-item">4着+12</span><span class="pt-rank-item">5着+8</span></div>
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span><span class="badge badge-in">イン差し(64%)</span><span class="badge badge-bio">★5割復帰</span></div>
+</div><div class="horse-row">
+<div class="horse-name">5番&nbsp; <a href="https://db.netkeiba.com/horse/2022100879" target="_blank" style="color:inherit;text-decoration:none">ニシノコヌカアメ</a></div>
+<div class="horse-sub">牝4歳  格:C2</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C2 330pt → C1ライン:600pt
+     (あと270pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:55%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+80</span><span class="pt-rank-item">2着+32</span><span class="pt-rank-item">3着+20</span><span class="pt-rank-item">4着+12</span><span class="pt-rank-item">5着+8</span></div>
+
+</div><div class="horse-row">
+<div class="horse-name">6番&nbsp; <a href="https://db.netkeiba.com/horse/2021109102" target="_blank" style="color:inherit;text-decoration:none">テルケンユミカブト</a></div>
+<div class="horse-sub">牝5歳  格:C3</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C3 220pt → C2ライン:500pt
+     (あと280pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:44%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+80</span><span class="pt-rank-item">2着+32</span><span class="pt-rank-item">3着+20</span><span class="pt-rank-item">4着+12</span><span class="pt-rank-item">5着+8</span></div>
+
+</div><div class="horse-row">
+<div class="horse-name">7番&nbsp; <a href="https://db.netkeiba.com/horse/2022102111" target="_blank" style="color:inherit;text-decoration:none">ゴルデューク</a></div>
+<div class="horse-sub">牡4歳  格:C3</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C3 162pt → C2ライン:300pt
+     (あと138pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:54%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+80</span><span class="pt-rank-item">2着+32</span><span class="pt-rank-item">3着+20</span><span class="pt-rank-item">4着+12</span><span class="pt-rank-item">5着+8</span></div>
+
+</div><div class="horse-row">
+<div class="horse-name">8番&nbsp; <a href="https://db.netkeiba.com/horse/2022100605" target="_blank" style="color:inherit;text-decoration:none">ファルコンブラック</a></div>
+<div class="horse-sub">牝4歳  格:C3</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C3 142pt → C2ライン:300pt
+     (あと158pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:47%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+80</span><span class="pt-rank-item">2着+32</span><span class="pt-rank-item">3着+20</span><span class="pt-rank-item">4着+12</span><span class="pt-rank-item">5着+8</span></div>
+
+</div><div class="horse-row">
+<div class="horse-name">9番&nbsp; <a href="https://db.netkeiba.com/horse/2022106373" target="_blank" style="color:inherit;text-decoration:none">カルサパラストリス</a></div>
+<div class="horse-sub">セ4歳  格:C2</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C2 322pt → C1ライン:600pt
+     (あと278pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:53%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+80</span><span class="pt-rank-item">2着+32</span><span class="pt-rank-item">3着+20</span><span class="pt-rank-item">4着+12</span><span class="pt-rank-item">5着+8</span></div>
+
+</div><div class="horse-row">
+<div class="horse-name">10番&nbsp; <a href="https://db.netkeiba.com/horse/2021104766" target="_blank" style="color:inherit;text-decoration:none">ベッティーナ</a></div>
+<div class="horse-sub">牝5歳  格:C3</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C3 320pt → C2ライン:500pt
+     (あと180pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:64%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+80</span><span class="pt-rank-item">2着+32</span><span class="pt-rank-item">3着+20</span><span class="pt-rank-item">4着+12</span><span class="pt-rank-item">5着+8</span></div>
+
+</div><div class="horse-row">
+<div class="horse-name">11番&nbsp; <a href="https://db.netkeiba.com/horse/2022100537" target="_blank" style="color:inherit;text-decoration:none">ジャスティンロング</a></div>
+<div class="horse-sub">牡4歳  格:C3</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C3 282pt → C2ライン:300pt
+     (あと18pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:94%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+80→昇級!</span><span class="pt-rank-item breakthrough">2着+32→昇級!</span><span class="pt-rank-item breakthrough">3着+20→昇級!</span><span class="pt-rank-item">4着+12</span><span class="pt-rank-item">5着+8</span></div>
+<div class="badges"><span class="badge badge-reach-warn">⚠リーチ圏(あと18pt)</span><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">12番&nbsp; <a href="https://db.netkeiba.com/horse/2019102067" target="_blank" style="color:inherit;text-decoration:none">ラインストライカー</a></div>
+<div class="horse-sub">セ7歳  格:C3</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C3 865pt → C2ライン:1100pt
+     (あと235pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:78%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+80</span><span class="pt-rank-item">2着+32</span><span class="pt-rank-item">3着+20</span><span class="pt-rank-item">4着+12</span><span class="pt-rank-item">5着+8</span></div>
+<div class="badges"><span class="badge badge-in">イン差し(62%)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">13番&nbsp; <a href="https://db.netkeiba.com/horse/2021107184" target="_blank" style="color:inherit;text-decoration:none">ベアウェイトゥゴー</a></div>
+<div class="horse-sub">牝5歳  格:C3</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C3 416pt → C2ライン:500pt
+     (あと84pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:83%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+80</span><span class="pt-rank-item">2着+32</span><span class="pt-rank-item">3着+20</span><span class="pt-rank-item">4着+12</span><span class="pt-rank-item">5着+8</span></div>
+
+</div><div class="horse-row">
+<div class="horse-name">14番&nbsp; <a href="https://db.netkeiba.com/horse/2022100844" target="_blank" style="color:inherit;text-decoration:none">ポジターノ</a></div>
+<div class="horse-sub">牝4歳  格:C3</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C3 208pt → C2ライン:300pt
+     (あと92pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:69%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+80</span><span class="pt-rank-item">2着+32</span><span class="pt-rank-item">3着+20</span><span class="pt-rank-item">4着+12</span><span class="pt-rank-item">5着+8</span></div>
+
+</div><div class="horse-row">
+<div class="horse-name">15番&nbsp; <a href="https://db.netkeiba.com/horse/2017106649" target="_blank" style="color:inherit;text-decoration:none">ガニュメデスレイ</a></div>
+<div class="horse-sub">牡9歳  格:C3</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C3 1041pt → C2ライン:1200pt
+     (あと159pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:86%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+80</span><span class="pt-rank-item">2着+32</span><span class="pt-rank-item">3着+20</span><span class="pt-rank-item">4着+12</span><span class="pt-rank-item">5着+8</span></div>
+
+</div>
+</div>
+<div class="race-block skip">
+<div class="race-header">2歳一二 出馬表 | 2026年7月24日 大井2R 地方競馬レース情報 - netkeiba (1400m ? 5頭)</div>
+<div class="race-skip-bar"><span class="skip-label">🚫 見送り</span><span class="skip-reason">3歳/2歳戦=クラス未確定 / 5頭=小頭数</span></div>
+<div class="horse-row">
+<div class="horse-name">1番&nbsp; <a href="https://db.netkeiba.com/horse/2024102873" target="_blank" style="color:inherit;text-decoration:none">カミコ</a></div>
+<div class="horse-sub">牝2歳  格:?</div>
+
+
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">2番&nbsp; <a href="https://db.netkeiba.com/horse/2024101378" target="_blank" style="color:inherit;text-decoration:none">コーミズピエール</a></div>
+<div class="horse-sub">牡2歳  格:?</div>
+
+
+
+</div><div class="horse-row">
+<div class="horse-name">3番&nbsp; <a href="https://db.netkeiba.com/horse/2024103352" target="_blank" style="color:inherit;text-decoration:none">オレンジルシファー</a></div>
+<div class="horse-sub">牡2歳  格:?</div>
+
+
+
+</div><div class="horse-row">
+<div class="horse-name">4番&nbsp; <a href="https://db.netkeiba.com/horse/2024102972" target="_blank" style="color:inherit;text-decoration:none">アウン</a></div>
+<div class="horse-sub">牡2歳  格:?</div>
+
+
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">5番&nbsp; <a href="https://db.netkeiba.com/horse/2024109009" target="_blank" style="color:inherit;text-decoration:none">デューアップ</a></div>
+<div class="horse-sub">牝2歳  格:?</div>
+
+
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div>
+</div>
+<div class="race-block skip">
+<div class="race-header">ニューホープ特別競走 出馬表 | 2026年7月24日 大井3R 地方競馬レース情報 - netkeiba (1200m ? 5頭)</div>
+<div class="race-skip-bar"><span class="skip-label">🚫 見送り</span><span class="skip-reason">5頭=小頭数 / 1200m=短距離</span></div>
+<div class="horse-row">
+<div class="horse-name">1番&nbsp; <a href="https://db.netkeiba.com/horse/2024105500" target="_blank" style="color:inherit;text-decoration:none">イントゥザライト</a></div>
+<div class="horse-sub">牡2歳  格:?</div>
+
+
+
+</div><div class="horse-row">
+<div class="horse-name">2番&nbsp; <a href="https://db.netkeiba.com/horse/2024100596" target="_blank" style="color:inherit;text-decoration:none">ゴールドシュミット</a></div>
+<div class="horse-sub">牡2歳  格:?</div>
+
+
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">3番&nbsp; <a href="https://db.netkeiba.com/horse/2024105246" target="_blank" style="color:inherit;text-decoration:none">シンゼンアカギ</a></div>
+<div class="horse-sub">牡2歳  格:?</div>
+
+
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">4番&nbsp; <a href="https://db.netkeiba.com/horse/2024101433" target="_blank" style="color:inherit;text-decoration:none">シャークリング</a></div>
+<div class="horse-sub">牝2歳  格:?</div>
+
+
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">5番&nbsp; <a href="https://db.netkeiba.com/horse/2024108129" target="_blank" style="color:inherit;text-decoration:none">フレンドトネール</a></div>
+<div class="horse-sub">牡2歳  格:?</div>
+
+
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div>
+</div>
+<div class="race-block skip">
+<div class="race-header">3歳一二三 出馬表 | 2026年7月24日 大井4R 地方競馬レース情報 - netkeiba (1600m ? 11頭)</div>
+<div class="race-skip-bar"><span class="skip-label">🚫 見送り</span><span class="skip-reason">3歳/2歳戦=クラス未確定</span></div>
+<div class="horse-row">
+<div class="horse-name">1番&nbsp; <a href="https://db.netkeiba.com/horse/2023105607" target="_blank" style="color:inherit;text-decoration:none">エスクラス</a></div>
+<div class="horse-sub">牝3歳  格:?</div>
+
+
+
+</div><div class="horse-row">
+<div class="horse-name">2番&nbsp; <a href="https://db.netkeiba.com/horse/2023103134" target="_blank" style="color:inherit;text-decoration:none">ボンヴィアッジョ</a></div>
+<div class="horse-sub">牝3歳  格:?</div>
+
+
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">3番&nbsp; <a href="https://db.netkeiba.com/horse/2023100289" target="_blank" style="color:inherit;text-decoration:none">ボワヴェール</a></div>
+<div class="horse-sub">牝3歳  格:?</div>
+
+
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">4番&nbsp; <a href="https://db.netkeiba.com/horse/2023101167" target="_blank" style="color:inherit;text-decoration:none">ティーエンティー</a></div>
+<div class="horse-sub">牡3歳  格:?</div>
+
+
+
+</div><div class="horse-row">
+<div class="horse-name">5番&nbsp; <a href="https://db.netkeiba.com/horse/2023101288" target="_blank" style="color:inherit;text-decoration:none">キャリアラダー</a></div>
+<div class="horse-sub">牡3歳  格:?</div>
+
+
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">6番&nbsp; <a href="https://db.netkeiba.com/horse/2023101222" target="_blank" style="color:inherit;text-decoration:none">ラストラブラブ</a></div>
+<div class="horse-sub">牝3歳  格:?</div>
+
+
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">7番&nbsp; <a href="https://db.netkeiba.com/horse/2023100821" target="_blank" style="color:inherit;text-decoration:none">ディアモアー</a></div>
+<div class="horse-sub">牝3歳  格:?</div>
+
+
+
+</div><div class="horse-row">
+<div class="horse-name">8番&nbsp; <a href="https://db.netkeiba.com/horse/2023106676" target="_blank" style="color:inherit;text-decoration:none">ハヤマデイズ</a></div>
+<div class="horse-sub">牝3歳  格:?</div>
+
+
+
+</div><div class="horse-row">
+<div class="horse-name">9番&nbsp; <a href="https://db.netkeiba.com/horse/2023100352" target="_blank" style="color:inherit;text-decoration:none">オモイデノアトサキ</a></div>
+<div class="horse-sub">牡3歳  格:?</div>
+
+
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">10番&nbsp; <a href="https://db.netkeiba.com/horse/2023106524" target="_blank" style="color:inherit;text-decoration:none">フジパールマン</a></div>
+<div class="horse-sub">牡3歳  格:?</div>
+
+
+
+</div><div class="horse-row">
+<div class="horse-name">11番&nbsp; <a href="https://db.netkeiba.com/horse/2023104702" target="_blank" style="color:inherit;text-decoration:none">セルフエース</a></div>
+<div class="horse-sub">牡3歳  格:C1</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 567pt → B3ライン:800pt
+     (あと233pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:70%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+80</span><span class="pt-rank-item">2着+32</span><span class="pt-rank-item">3着+20</span><span class="pt-rank-item">4着+12</span><span class="pt-rank-item">5着+8</span></div>
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span><span class="badge badge-in">イン差し(100%)</span></div>
+</div>
+</div>
+<div class="race-block skip">
+<div class="race-header">3歳一二三 出馬表 | 2026年7月24日 大井5R 地方競馬レース情報 - netkeiba (1400m ? 14頭)</div>
+<div class="race-skip-bar"><span class="skip-label">🚫 見送り</span><span class="skip-reason">3歳/2歳戦=クラス未確定</span></div>
+<div class="horse-row">
+<div class="horse-name">1番&nbsp; <a href="https://db.netkeiba.com/horse/2023102136" target="_blank" style="color:inherit;text-decoration:none">スズノアリマール</a></div>
+<div class="horse-sub">牝3歳  格:?</div>
+
+
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">2番&nbsp; <a href="https://db.netkeiba.com/horse/2023102985" target="_blank" style="color:inherit;text-decoration:none">ローズプリンセス</a></div>
+<div class="horse-sub">牝3歳  格:?</div>
+
+
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">3番&nbsp; <a href="https://db.netkeiba.com/horse/2023100029" target="_blank" style="color:inherit;text-decoration:none">プレイバック</a></div>
+<div class="horse-sub">牡3歳  格:?</div>
+
+
+
+</div><div class="horse-row">
+<div class="horse-name">4番&nbsp; <a href="https://db.netkeiba.com/horse/2023105923" target="_blank" style="color:inherit;text-decoration:none">レヴェルトディオ</a></div>
+<div class="horse-sub">牡3歳  格:?</div>
+
+
+
+</div><div class="horse-row">
+<div class="horse-name">5番&nbsp; <a href="https://db.netkeiba.com/horse/2023106635" target="_blank" style="color:inherit;text-decoration:none">ヘイアンティアー</a></div>
+<div class="horse-sub">牝3歳  格:?</div>
+
+
+<div class="badges"><span class="badge badge-bio">★5割復帰</span></div>
+</div><div class="horse-row">
+<div class="horse-name">6番&nbsp; <a href="https://db.netkeiba.com/horse/2023100274" target="_blank" style="color:inherit;text-decoration:none">ピルゴスアイトス</a></div>
+<div class="horse-sub">牡3歳  格:?</div>
+
+
+<div class="badges"><span class="badge badge-bio">★5割復帰</span></div>
+</div><div class="horse-row">
+<div class="horse-name">7番&nbsp; <a href="https://db.netkeiba.com/horse/2023103990" target="_blank" style="color:inherit;text-decoration:none">ミュウチャン</a></div>
+<div class="horse-sub">牝3歳  格:?</div>
+
+
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span><span class="badge badge-bio">★5割復帰</span></div>
+</div><div class="horse-row">
+<div class="horse-name">8番&nbsp; <a href="https://db.netkeiba.com/horse/2023101567" target="_blank" style="color:inherit;text-decoration:none">ニジイロピカール</a></div>
+<div class="horse-sub">牝3歳  格:?</div>
+
+
+
+</div><div class="horse-row">
+<div class="horse-name">9番&nbsp; <a href="https://db.netkeiba.com/horse/2023101741" target="_blank" style="color:inherit;text-decoration:none">ロンギングスター</a></div>
+<div class="horse-sub">牡3歳  格:?</div>
+
+
+
+</div><div class="horse-row">
+<div class="horse-name">10番&nbsp; <a href="https://db.netkeiba.com/horse/2023102679" target="_blank" style="color:inherit;text-decoration:none">エドノスターウッド</a></div>
+<div class="horse-sub">牡3歳  格:?</div>
+
+
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">11番&nbsp; <a href="https://db.netkeiba.com/horse/2023106212" target="_blank" style="color:inherit;text-decoration:none">スリーバンカーズ</a></div>
+<div class="horse-sub">牡3歳  格:?</div>
+
+
+
+</div><div class="horse-row">
+<div class="horse-name">12番&nbsp; <a href="https://db.netkeiba.com/horse/2023103653" target="_blank" style="color:inherit;text-decoration:none">ハッチン</a></div>
+<div class="horse-sub">牝3歳  格:?</div>
+
+
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">13番&nbsp; <a href="https://db.netkeiba.com/horse/2023101130" target="_blank" style="color:inherit;text-decoration:none">ハルイチバン</a></div>
+<div class="horse-sub">牡3歳  格:?</div>
+
+
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">14番&nbsp; <a href="https://db.netkeiba.com/horse/2023102307" target="_blank" style="color:inherit;text-decoration:none">カンタベリータイム</a></div>
+<div class="horse-sub">牝3歳  格:?</div>
+
+
+
+</div>
+</div>
+<div class="race-block skip">
+<div class="race-header">3歳一二三 出馬表 | 2026年7月24日 大井6R 地方競馬レース情報 - netkeiba (1200m ? 15頭)</div>
+<div class="race-skip-bar"><span class="skip-label">🚫 見送り</span><span class="skip-reason">3歳/2歳戦=クラス未確定 / 1200m=短距離</span></div>
+<div class="horse-row">
+<div class="horse-name">1番&nbsp; <a href="https://db.netkeiba.com/horse/2023103027" target="_blank" style="color:inherit;text-decoration:none">シンプウエース</a></div>
+<div class="horse-sub">牡3歳  格:?</div>
+
+
+
+</div><div class="horse-row">
+<div class="horse-name">2番&nbsp; <a href="https://db.netkeiba.com/horse/2023107499" target="_blank" style="color:inherit;text-decoration:none">サマニデンカ</a></div>
+<div class="horse-sub">牡3歳  格:?</div>
+
+
+<div class="badges"><span class="badge badge-bio">★5割復帰</span></div>
+</div><div class="horse-row">
+<div class="horse-name">3番&nbsp; <a href="https://db.netkeiba.com/horse/2023103091" target="_blank" style="color:inherit;text-decoration:none">マジックエレガンス</a></div>
+<div class="horse-sub">牝3歳  格:?</div>
+
+
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">4番&nbsp; <a href="https://db.netkeiba.com/horse/2023101210" target="_blank" style="color:inherit;text-decoration:none">マインゴールド</a></div>
+<div class="horse-sub">牡3歳  格:?</div>
+
+
+
+</div><div class="horse-row">
+<div class="horse-name">5番&nbsp; <a href="https://db.netkeiba.com/horse/2023102652" target="_blank" style="color:inherit;text-decoration:none">シュヴァルニブロン</a></div>
+<div class="horse-sub">牡3歳  格:?</div>
+
+
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">6番&nbsp; <a href="https://db.netkeiba.com/horse/2023106036" target="_blank" style="color:inherit;text-decoration:none">タイセイディエティ</a></div>
+<div class="horse-sub">牝3歳  格:?</div>
+
+
+
+</div><div class="horse-row">
+<div class="horse-name">7番&nbsp; <a href="https://db.netkeiba.com/horse/2023101510" target="_blank" style="color:inherit;text-decoration:none">ブイスリー</a></div>
+<div class="horse-sub">牡3歳  格:?</div>
+
+
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">8番&nbsp; <a href="https://db.netkeiba.com/horse/2023109104" target="_blank" style="color:inherit;text-decoration:none">オテモヤン</a></div>
+<div class="horse-sub">牝3歳  格:?</div>
+
+
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">9番&nbsp; <a href="https://db.netkeiba.com/horse/2023104633" target="_blank" style="color:inherit;text-decoration:none">ボビー</a></div>
+<div class="horse-sub">牡3歳  格:?</div>
+
+
+
+</div><div class="horse-row">
+<div class="horse-name">10番&nbsp; <a href="https://db.netkeiba.com/horse/2023102503" target="_blank" style="color:inherit;text-decoration:none">ストレートビーム</a></div>
+<div class="horse-sub">牡3歳  格:?</div>
+
+
+<div class="badges"><span class="badge badge-bio">★5割復帰</span></div>
+</div><div class="horse-row">
+<div class="horse-name">11番&nbsp; <a href="https://db.netkeiba.com/horse/2023103312" target="_blank" style="color:inherit;text-decoration:none">アンパンタイム</a></div>
+<div class="horse-sub">牝3歳  格:?</div>
+
+
+<div class="badges"><span class="badge badge-bio">★5割復帰</span></div>
+</div><div class="horse-row">
+<div class="horse-name">12番&nbsp; <a href="https://db.netkeiba.com/horse/2023102851" target="_blank" style="color:inherit;text-decoration:none">オレンジマン</a></div>
+<div class="horse-sub">牡3歳  格:?</div>
+
+
+
+</div><div class="horse-row">
+<div class="horse-name">13番&nbsp; <a href="https://db.netkeiba.com/horse/2023100648" target="_blank" style="color:inherit;text-decoration:none">サヴォア</a></div>
+<div class="horse-sub">牝3歳  格:?</div>
+
+
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">14番&nbsp; <a href="https://db.netkeiba.com/horse/2023101536" target="_blank" style="color:inherit;text-decoration:none">スクラッチクラッチ</a></div>
+<div class="horse-sub">牝3歳  格:?</div>
+
+
+
+</div><div class="horse-row">
+<div class="horse-name">15番&nbsp; <a href="https://db.netkeiba.com/horse/2023101340" target="_blank" style="color:inherit;text-decoration:none">タケゾウ</a></div>
+<div class="horse-sub">牡3歳  格:?</div>
+
+
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div>
+</div>
+<div class="race-block">
+<div class="race-header">勝鬨橋賞競走 出馬表 | 2026年7月24日 大井7R 地方競馬レース情報 - netkeiba (2000m B1 9頭)</div>
+<div class="race-pt-row">付与ポイント: 1着+320pt / 2着+128pt / 3着+80pt / 4着+48pt / 5着+32pt</div>
+<div class="horse-row">
+<div class="horse-name">1番&nbsp; <a href="https://db.netkeiba.com/horse/2019105996" target="_blank" style="color:inherit;text-decoration:none">ベンテイガ</a></div>
+<div class="horse-sub">セ7歳  格:B2</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">B2 2404pt → B1ライン:2900pt
+     (あと496pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:82%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+320</span><span class="pt-rank-item">2着+128</span><span class="pt-rank-item">3着+80</span><span class="pt-rank-item">4着+48</span><span class="pt-rank-item">5着+32</span></div>
+<div class="badges"><span class="badge badge-bio">★5割復帰</span></div>
+</div><div class="horse-row">
+<div class="horse-name">2番&nbsp; <a href="https://db.netkeiba.com/horse/2022107315" target="_blank" style="color:inherit;text-decoration:none">グレアネオンライト</a></div>
+<div class="horse-sub">牝4歳  格:B2</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">B2 1708pt → B1ライン:1800pt
+     (あと92pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:94%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+320→昇級!</span><span class="pt-rank-item breakthrough">2着+128→昇級!</span><span class="pt-rank-item">3着+80</span><span class="pt-rank-item">4着+48</span><span class="pt-rank-item">5着+32</span></div>
+
+</div><div class="horse-row">
+<div class="horse-name">3番&nbsp; <a href="https://db.netkeiba.com/horse/2019100998" target="_blank" style="color:inherit;text-decoration:none">スパルタレオニダス</a></div>
+<div class="horse-sub">牡7歳  格:B1</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">B1 3682pt → A2ライン:3900pt
+     (あと218pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:94%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+320→昇級!</span><span class="pt-rank-item">2着+128</span><span class="pt-rank-item">3着+80</span><span class="pt-rank-item">4着+48</span><span class="pt-rank-item">5着+32</span></div>
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span><span class="badge badge-in">イン差し(84%)</span><span class="badge badge-bio">★5割復帰</span></div>
+</div><div class="horse-row">
+<div class="horse-name">4番&nbsp; <a href="https://db.netkeiba.com/horse/2021101174" target="_blank" style="color:inherit;text-decoration:none">マロンシャンテリー</a></div>
+<div class="horse-sub">牡5歳  格:B1</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">B1 2177pt → A2ライン:2600pt
+     (あと423pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:83%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+320</span><span class="pt-rank-item">2着+128</span><span class="pt-rank-item">3着+80</span><span class="pt-rank-item">4着+48</span><span class="pt-rank-item">5着+32</span></div>
+<div class="badges"><span class="badge badge-in">イン差し(67%)</span><span class="badge badge-bio">★5割復帰</span></div>
+</div><div class="horse-row">
+<div class="horse-name">5番&nbsp; <a href="https://db.netkeiba.com/horse/2021104797" target="_blank" style="color:inherit;text-decoration:none">シャドウルパン</a></div>
+<div class="horse-sub">牡5歳  格:B1</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">B1 2015pt → A2ライン:2600pt
+     (あと585pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:77%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+320</span><span class="pt-rank-item">2着+128</span><span class="pt-rank-item">3着+80</span><span class="pt-rank-item">4着+48</span><span class="pt-rank-item">5着+32</span></div>
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span><span class="badge badge-in">イン差し(55%)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">6番&nbsp; <a href="https://db.netkeiba.com/horse/2019105383" target="_blank" style="color:inherit;text-decoration:none">ダイバリオン</a></div>
+<div class="horse-sub">牡7歳  格:B1</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">B1 3550pt → A2ライン:3900pt
+     (あと350pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:91%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+320</span><span class="pt-rank-item">2着+128</span><span class="pt-rank-item">3着+80</span><span class="pt-rank-item">4着+48</span><span class="pt-rank-item">5着+32</span></div>
+
+</div><div class="horse-row">
+<div class="horse-name">7番&nbsp; <a href="https://db.netkeiba.com/horse/2019103165" target="_blank" style="color:inherit;text-decoration:none">ファーガス</a></div>
+<div class="horse-sub">牡7歳  格:B2</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">B2 2736pt → B1ライン:2900pt
+     (あと164pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:94%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+320→昇級!</span><span class="pt-rank-item">2着+128</span><span class="pt-rank-item">3着+80</span><span class="pt-rank-item">4着+48</span><span class="pt-rank-item">5着+32</span></div>
+<div class="badges"><span class="badge badge-in">イン差し(68%)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">8番&nbsp; <a href="https://db.netkeiba.com/horse/2018104301" target="_blank" style="color:inherit;text-decoration:none">サブノハクタカ</a></div>
+<div class="horse-sub">牡8歳  格:B1</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">B1 3327pt → A2ライン:4100pt
+     (あと773pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:81%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+320</span><span class="pt-rank-item">2着+128</span><span class="pt-rank-item">3着+80</span><span class="pt-rank-item">4着+48</span><span class="pt-rank-item">5着+32</span></div>
+<div class="badges"><span class="badge badge-in">イン差し(53%)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">9番&nbsp; <a href="https://db.netkeiba.com/horse/2018101370" target="_blank" style="color:inherit;text-decoration:none">ビシャモンテン</a></div>
+<div class="horse-sub">牡8歳  格:B1</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">B1 3567pt → A2ライン:4100pt
+     (あと533pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:87%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+320</span><span class="pt-rank-item">2着+128</span><span class="pt-rank-item">3着+80</span><span class="pt-rank-item">4着+48</span><span class="pt-rank-item">5着+32</span></div>
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span><span class="badge badge-in">イン差し(60%)</span></div>
+</div>
+</div>
+<div class="race-block skip">
+<div class="race-header">テネシー・クーラー賞 出馬表 | 2026年7月24日 大井8R 地方競馬レース情報 - netkeiba (1000m C1 12頭)</div>
+<div class="race-skip-bar"><span class="skip-label">🚫 見送り</span><span class="skip-reason">1000m=短距離</span></div><div class="race-pt-row">付与ポイント: 1着+200pt / 2着+80pt / 3着+50pt / 4着+30pt / 5着+20pt</div>
+<div class="horse-row">
+<div class="horse-name">1番&nbsp; <a href="https://db.netkeiba.com/horse/2019100587" target="_blank" style="color:inherit;text-decoration:none">サカベンクイーン</a></div>
+<div class="horse-sub">牝7歳  格:C2</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C2 1184pt → C1ライン:1400pt
+     (あと216pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:84%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+200</span><span class="pt-rank-item">2着+80</span><span class="pt-rank-item">3着+50</span><span class="pt-rank-item">4着+30</span><span class="pt-rank-item">5着+20</span></div>
+
+</div><div class="horse-row">
+<div class="horse-name">2番&nbsp; <a href="https://db.netkeiba.com/horse/2022102353" target="_blank" style="color:inherit;text-decoration:none">ニンリル</a></div>
+<div class="horse-sub">牝4歳  格:C1</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 755pt → B3ライン:900pt
+     (あと145pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:83%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+200→昇級!</span><span class="pt-rank-item">2着+80</span><span class="pt-rank-item">3着+50</span><span class="pt-rank-item">4着+30</span><span class="pt-rank-item">5着+20</span></div>
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">3番&nbsp; <a href="https://db.netkeiba.com/horse/2022107032" target="_blank" style="color:inherit;text-decoration:none">フレンドリーシップ</a></div>
+<div class="horse-sub">牝4歳  格:C1</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 816pt → B3ライン:900pt
+     (あと84pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:90%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+200→昇級!</span><span class="pt-rank-item">2着+80</span><span class="pt-rank-item">3着+50</span><span class="pt-rank-item">4着+30</span><span class="pt-rank-item">5着+20</span></div>
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">4番&nbsp; <a href="https://db.netkeiba.com/horse/2022101409" target="_blank" style="color:inherit;text-decoration:none">レーヴレジェンド</a></div>
+<div class="horse-sub">牡4歳  格:C1</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 773pt → B3ライン:900pt
+     (あと127pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:85%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+200→昇級!</span><span class="pt-rank-item">2着+80</span><span class="pt-rank-item">3着+50</span><span class="pt-rank-item">4着+30</span><span class="pt-rank-item">5着+20</span></div>
+
+</div><div class="horse-row">
+<div class="horse-name">5番&nbsp; <a href="https://db.netkeiba.com/horse/2022105953" target="_blank" style="color:inherit;text-decoration:none">アンモニャイト</a></div>
+<div class="horse-sub">牝4歳  格:C1</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 624pt → B3ライン:900pt
+     (あと276pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:69%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+200</span><span class="pt-rank-item">2着+80</span><span class="pt-rank-item">3着+50</span><span class="pt-rank-item">4着+30</span><span class="pt-rank-item">5着+20</span></div>
+
+</div><div class="horse-row">
+<div class="horse-name">6番&nbsp; <a href="https://db.netkeiba.com/horse/2022102646" target="_blank" style="color:inherit;text-decoration:none">マジシャンガール</a></div>
+<div class="horse-sub">牝4歳  格:C1</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 756pt → B3ライン:900pt
+     (あと144pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:84%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+200→昇級!</span><span class="pt-rank-item">2着+80</span><span class="pt-rank-item">3着+50</span><span class="pt-rank-item">4着+30</span><span class="pt-rank-item">5着+20</span></div>
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span><span class="badge badge-in">イン差し(67%)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">7番&nbsp; <a href="https://db.netkeiba.com/horse/2022100412" target="_blank" style="color:inherit;text-decoration:none">ラッキーカムカム</a></div>
+<div class="horse-sub">牝4歳  格:C2</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C2 438pt → C1ライン:600pt
+     (あと162pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:73%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+200→昇級!</span><span class="pt-rank-item">2着+80</span><span class="pt-rank-item">3着+50</span><span class="pt-rank-item">4着+30</span><span class="pt-rank-item">5着+20</span></div>
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">8番&nbsp; <a href="https://db.netkeiba.com/horse/2020106556" target="_blank" style="color:inherit;text-decoration:none">ティーズアペックス</a></div>
+<div class="horse-sub">牝6歳  格:C1</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 1281pt → B3ライン:1400pt
+     (あと119pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:91%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+200→昇級!</span><span class="pt-rank-item">2着+80</span><span class="pt-rank-item">3着+50</span><span class="pt-rank-item">4着+30</span><span class="pt-rank-item">5着+20</span></div>
+
+</div><div class="horse-row">
+<div class="horse-name">9番&nbsp; <a href="https://db.netkeiba.com/horse/2021104228" target="_blank" style="color:inherit;text-decoration:none">マドモアゼルレンヌ</a></div>
+<div class="horse-sub">牝5歳  格:C1</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 826pt → B3ライン:1100pt
+     (あと274pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:75%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+200</span><span class="pt-rank-item">2着+80</span><span class="pt-rank-item">3着+50</span><span class="pt-rank-item">4着+30</span><span class="pt-rank-item">5着+20</span></div>
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">10番&nbsp; <a href="https://db.netkeiba.com/horse/2021107137" target="_blank" style="color:inherit;text-decoration:none">サウンドクラージュ</a></div>
+<div class="horse-sub">牡5歳  格:C1</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 1052pt → B3ライン:1100pt
+     (あと48pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-reach" style="width:95%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+200→昇級!</span><span class="pt-rank-item breakthrough">2着+80→昇級!</span><span class="pt-rank-item breakthrough">3着+50→昇級!</span><span class="pt-rank-item">4着+30</span><span class="pt-rank-item">5着+20</span></div>
+<div class="badges"><span class="badge badge-reach-warn">⚠リーチ圏(あと48pt)</span><span class="badge badge-in">イン差し(71%)</span><span class="badge badge-bio">★5割復帰</span></div>
+</div><div class="horse-row">
+<div class="horse-name">11番&nbsp; <a href="https://db.netkeiba.com/horse/2020101866" target="_blank" style="color:inherit;text-decoration:none">アオイコウキ</a></div>
+<div class="horse-sub">牡6歳  格:C1</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 1176pt → B3ライン:1400pt
+     (あと224pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:84%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+200</span><span class="pt-rank-item">2着+80</span><span class="pt-rank-item">3着+50</span><span class="pt-rank-item">4着+30</span><span class="pt-rank-item">5着+20</span></div>
+<div class="badges"><span class="badge badge-in">イン差し(50%)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">12番&nbsp; <a href="https://db.netkeiba.com/horse/2022107132" target="_blank" style="color:inherit;text-decoration:none">タガノサダフ</a></div>
+<div class="horse-sub">牡4歳  格:C2</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C2 491pt → C1ライン:600pt
+     (あと109pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:81%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+200→昇級!</span><span class="pt-rank-item">2着+80</span><span class="pt-rank-item">3着+50</span><span class="pt-rank-item">4着+30</span><span class="pt-rank-item">5着+20</span></div>
+
+</div>
+</div>
+<div class="race-block">
+<div class="race-header">C1二三四 出馬表 | 2026年7月24日 大井9R 地方競馬レース情報 - netkeiba (1600m C1 12頭)</div>
+<div class="race-pt-row">付与ポイント: 1着+150pt / 2着+60pt / 3着+38pt / 4着+23pt / 5着+15pt</div>
+<div class="horse-row">
+<div class="horse-name">1番&nbsp; <a href="https://db.netkeiba.com/horse/2020105078" target="_blank" style="color:inherit;text-decoration:none">ユーヒナタ</a></div>
+<div class="horse-sub">牝6歳  格:C1</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 1328pt → B3ライン:1400pt
+     (あと72pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:94%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+150→昇級!</span><span class="pt-rank-item">2着+60</span><span class="pt-rank-item">3着+38</span><span class="pt-rank-item">4着+23</span><span class="pt-rank-item">5着+15</span></div>
+<div class="badges"><span class="badge badge-reach-warn">⚠リーチ圏(あと72pt)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">2番&nbsp; <a href="https://db.netkeiba.com/horse/2021103121" target="_blank" style="color:inherit;text-decoration:none">ケイアイエルナト</a></div>
+<div class="horse-sub">牡5歳  格:B3</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">B3 1214pt → B2ライン:1500pt
+     (あと286pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:80%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+150</span><span class="pt-rank-item">2着+60</span><span class="pt-rank-item">3着+38</span><span class="pt-rank-item">4着+23</span><span class="pt-rank-item">5着+15</span></div>
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span><span class="badge badge-in">イン差し(80%)</span><span class="badge badge-bio">★5割復帰</span></div>
+</div><div class="horse-row">
+<div class="horse-name">3番&nbsp; <a href="https://db.netkeiba.com/horse/2020104799" target="_blank" style="color:inherit;text-decoration:none">エスプリリチャード</a></div>
+<div class="horse-sub">牡6歳  格:C1</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 1266pt → B3ライン:1400pt
+     (あと134pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:90%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+150→昇級!</span><span class="pt-rank-item">2着+60</span><span class="pt-rank-item">3着+38</span><span class="pt-rank-item">4着+23</span><span class="pt-rank-item">5着+15</span></div>
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span><span class="badge badge-in">イン差し(50%)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">4番&nbsp; <a href="https://db.netkeiba.com/horse/2022106265" target="_blank" style="color:inherit;text-decoration:none">ハクアイソレイユ</a></div>
+<div class="horse-sub">牝4歳  格:C1</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 777pt → B3ライン:900pt
+     (あと123pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:86%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+150→昇級!</span><span class="pt-rank-item">2着+60</span><span class="pt-rank-item">3着+38</span><span class="pt-rank-item">4着+23</span><span class="pt-rank-item">5着+15</span></div>
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">5番&nbsp; <a href="https://db.netkeiba.com/horse/2022106077" target="_blank" style="color:inherit;text-decoration:none">グロワールスカイ</a></div>
+<div class="horse-sub">牡4歳  格:C1</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 875pt → B3ライン:900pt
+     (あと25pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-reach" style="width:97%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+150→昇級!</span><span class="pt-rank-item breakthrough">2着+60→昇級!</span><span class="pt-rank-item breakthrough">3着+38→昇級!</span><span class="pt-rank-item">4着+23</span><span class="pt-rank-item">5着+15</span></div>
+<div class="badges"><span class="badge badge-reach-warn">⚠リーチ圏(あと25pt)</span><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span><span class="badge badge-in">イン差し(75%)</span><span class="badge badge-bio">★5割復帰</span></div>
+</div><div class="horse-row">
+<div class="horse-name">6番&nbsp; <a href="https://db.netkeiba.com/horse/2019100784" target="_blank" style="color:inherit;text-decoration:none">マイネルイージス</a></div>
+<div class="horse-sub">牡7歳  格:C1</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 1565pt → B3ライン:1700pt
+     (あと135pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:92%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+150→昇級!</span><span class="pt-rank-item">2着+60</span><span class="pt-rank-item">3着+38</span><span class="pt-rank-item">4着+23</span><span class="pt-rank-item">5着+15</span></div>
+
+</div><div class="horse-row">
+<div class="horse-name">7番&nbsp; <a href="https://db.netkeiba.com/horse/2021106753" target="_blank" style="color:inherit;text-decoration:none">ヴァルタリ</a></div>
+<div class="horse-sub">牡5歳  格:C1</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 1040pt → B3ライン:1100pt
+     (あと60pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:94%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+150→昇級!</span><span class="pt-rank-item breakthrough">2着+60→昇級!</span><span class="pt-rank-item">3着+38</span><span class="pt-rank-item">4着+23</span><span class="pt-rank-item">5着+15</span></div>
+<div class="badges"><span class="badge badge-reach-warn">⚠リーチ圏(あと60pt)</span><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span><span class="badge badge-in">イン差し(89%)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">8番&nbsp; <a href="https://db.netkeiba.com/horse/2021103091" target="_blank" style="color:inherit;text-decoration:none">コーゲンシルバー</a></div>
+<div class="horse-sub">牡5歳  格:C1</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 1024pt → B3ライン:1100pt
+     (あと76pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:93%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+150→昇級!</span><span class="pt-rank-item">2着+60</span><span class="pt-rank-item">3着+38</span><span class="pt-rank-item">4着+23</span><span class="pt-rank-item">5着+15</span></div>
+<div class="badges"><span class="badge badge-reach-warn">⚠リーチ圏(あと76pt)</span><span class="badge badge-in">イン差し(80%)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">9番&nbsp; <a href="https://db.netkeiba.com/horse/2021106688" target="_blank" style="color:inherit;text-decoration:none">カズノトレジャー</a></div>
+<div class="horse-sub">牡5歳  格:C1</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 985pt → B3ライン:1100pt
+     (あと115pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:89%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+150→昇級!</span><span class="pt-rank-item">2着+60</span><span class="pt-rank-item">3着+38</span><span class="pt-rank-item">4着+23</span><span class="pt-rank-item">5着+15</span></div>
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span><span class="badge badge-in">イン差し(62%)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">10番&nbsp; <a href="https://db.netkeiba.com/horse/2022104982" target="_blank" style="color:inherit;text-decoration:none">サンディエゴ</a></div>
+<div class="horse-sub">セ4歳  格:C1</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 764pt → B3ライン:900pt
+     (あと136pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:84%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+150→昇級!</span><span class="pt-rank-item">2着+60</span><span class="pt-rank-item">3着+38</span><span class="pt-rank-item">4着+23</span><span class="pt-rank-item">5着+15</span></div>
+
+</div><div class="horse-row">
+<div class="horse-name">11番&nbsp; <a href="https://db.netkeiba.com/horse/2021104727" target="_blank" style="color:inherit;text-decoration:none">グレック</a></div>
+<div class="horse-sub">牡5歳  格:C1</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 1018pt → B3ライン:1100pt
+     (あと82pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:92%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+150→昇級!</span><span class="pt-rank-item">2着+60</span><span class="pt-rank-item">3着+38</span><span class="pt-rank-item">4着+23</span><span class="pt-rank-item">5着+15</span></div>
+<div class="badges"><span class="badge badge-in">イン差し(64%)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">12番&nbsp; <a href="https://db.netkeiba.com/horse/2020110151" target="_blank" style="color:inherit;text-decoration:none">グレン</a></div>
+<div class="horse-sub">牡6歳  格:C1</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 1381pt → B3ライン:1400pt
+     (あと19pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-reach" style="width:98%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+150→昇級!</span><span class="pt-rank-item breakthrough">2着+60→昇級!</span><span class="pt-rank-item breakthrough">3着+38→昇級!</span><span class="pt-rank-item breakthrough">4着+23→昇級!</span><span class="pt-rank-item">5着+15</span></div>
+<div class="badges"><span class="badge badge-reach-warn">⚠リーチ圏(あと19pt)</span><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div>
+</div>
+<div class="race-block">
+<div class="race-header">C1二三四 出馬表 | 2026年7月24日 大井10R 地方競馬レース情報 - netkeiba (1400m C1 14頭)</div>
+<div class="race-pt-row">付与ポイント: 1着+150pt / 2着+60pt / 3着+38pt / 4着+23pt / 5着+15pt</div>
+<div class="horse-row">
+<div class="horse-name">1番&nbsp; <a href="https://db.netkeiba.com/horse/2021105388" target="_blank" style="color:inherit;text-decoration:none">ゴンザーゴ</a></div>
+<div class="horse-sub">牡5歳  格:C1</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 1054pt → B3ライン:1100pt
+     (あと46pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-reach" style="width:95%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+150→昇級!</span><span class="pt-rank-item breakthrough">2着+60→昇級!</span><span class="pt-rank-item">3着+38</span><span class="pt-rank-item">4着+23</span><span class="pt-rank-item">5着+15</span></div>
+<div class="badges"><span class="badge badge-reach-warn">⚠リーチ圏(あと46pt)</span><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">2番&nbsp; <a href="https://db.netkeiba.com/horse/2022107167" target="_blank" style="color:inherit;text-decoration:none">リュキア</a></div>
+<div class="horse-sub">牡4歳  格:C1</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 846pt → B3ライン:900pt
+     (あと54pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:94%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+150→昇級!</span><span class="pt-rank-item breakthrough">2着+60→昇級!</span><span class="pt-rank-item">3着+38</span><span class="pt-rank-item">4着+23</span><span class="pt-rank-item">5着+15</span></div>
+<div class="badges"><span class="badge badge-reach-warn">⚠リーチ圏(あと54pt)</span><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">3番&nbsp; <a href="https://db.netkeiba.com/horse/2023100030" target="_blank" style="color:inherit;text-decoration:none">シャンスラード</a></div>
+<div class="horse-sub">牡3歳  格:B3</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">B3 832pt → B2ライン:1200pt
+     (あと368pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:69%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+150</span><span class="pt-rank-item">2着+60</span><span class="pt-rank-item">3着+38</span><span class="pt-rank-item">4着+23</span><span class="pt-rank-item">5着+15</span></div>
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span><span class="badge badge-in">イン差し(80%)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">4番&nbsp; <a href="https://db.netkeiba.com/horse/2022101313" target="_blank" style="color:inherit;text-decoration:none">ティーズリンク</a></div>
+<div class="horse-sub">牝4歳  格:C1</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 793pt → B3ライン:900pt
+     (あと107pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:88%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+150→昇級!</span><span class="pt-rank-item">2着+60</span><span class="pt-rank-item">3着+38</span><span class="pt-rank-item">4着+23</span><span class="pt-rank-item">5着+15</span></div>
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">5番&nbsp; <a href="https://db.netkeiba.com/horse/2022103671" target="_blank" style="color:inherit;text-decoration:none">キタサンユージャ</a></div>
+<div class="horse-sub">牡4歳  格:C1</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 885pt → B3ライン:900pt
+     (あと15pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-reach" style="width:98%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+150→昇級!</span><span class="pt-rank-item breakthrough">2着+60→昇級!</span><span class="pt-rank-item breakthrough">3着+38→昇級!</span><span class="pt-rank-item breakthrough">4着+23→昇級!</span><span class="pt-rank-item breakthrough">5着+15→昇級!</span></div>
+<div class="badges"><span class="badge badge-reach-warn">⚠リーチ圏(あと15pt)</span><span class="badge badge-in">イン差し(70%)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">6番&nbsp; <a href="https://db.netkeiba.com/horse/2021101625" target="_blank" style="color:inherit;text-decoration:none">ワンウェイ</a></div>
+<div class="horse-sub">牡5歳  格:C1</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 1070pt → B3ライン:1100pt
+     (あと30pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-reach" style="width:97%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+150→昇級!</span><span class="pt-rank-item breakthrough">2着+60→昇級!</span><span class="pt-rank-item breakthrough">3着+38→昇級!</span><span class="pt-rank-item">4着+23</span><span class="pt-rank-item">5着+15</span></div>
+<div class="badges"><span class="badge badge-reach-warn">⚠リーチ圏(あと30pt)</span><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span><span class="badge badge-in">イン差し(82%)</span><span class="badge badge-bio">★5割復帰</span></div>
+</div><div class="horse-row">
+<div class="horse-name">7番&nbsp; <a href="https://db.netkeiba.com/horse/2022105263" target="_blank" style="color:inherit;text-decoration:none">ミクニサンシャイン</a></div>
+<div class="horse-sub">牡4歳  格:B3</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">B3 1024pt → B2ライン:1300pt
+     (あと276pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:78%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+150</span><span class="pt-rank-item">2着+60</span><span class="pt-rank-item">3着+38</span><span class="pt-rank-item">4着+23</span><span class="pt-rank-item">5着+15</span></div>
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">8番&nbsp; <a href="https://db.netkeiba.com/horse/2017105608" target="_blank" style="color:inherit;text-decoration:none">カヴァス</a></div>
+<div class="horse-sub">セ9歳  格:C1</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 1650pt → B3ライン:1800pt
+     (あと150pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:91%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+150→昇級!</span><span class="pt-rank-item">2着+60</span><span class="pt-rank-item">3着+38</span><span class="pt-rank-item">4着+23</span><span class="pt-rank-item">5着+15</span></div>
+
+</div><div class="horse-row">
+<div class="horse-name">9番&nbsp; <a href="https://db.netkeiba.com/horse/2022105688" target="_blank" style="color:inherit;text-decoration:none">ドバイミッション</a></div>
+<div class="horse-sub">牡4歳  格:C1</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 699pt → B3ライン:900pt
+     (あと201pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:77%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+150</span><span class="pt-rank-item">2着+60</span><span class="pt-rank-item">3着+38</span><span class="pt-rank-item">4着+23</span><span class="pt-rank-item">5着+15</span></div>
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">10番&nbsp; <a href="https://db.netkeiba.com/horse/2023101059" target="_blank" style="color:inherit;text-decoration:none">ドライブミーホーム</a></div>
+<div class="horse-sub">牡3歳  格:C1</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 786pt → B3ライン:800pt
+     (あと14pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-reach" style="width:98%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+150→昇級!</span><span class="pt-rank-item breakthrough">2着+60→昇級!</span><span class="pt-rank-item breakthrough">3着+38→昇級!</span><span class="pt-rank-item breakthrough">4着+23→昇級!</span><span class="pt-rank-item breakthrough">5着+15→昇級!</span></div>
+<div class="badges"><span class="badge badge-reach-warn">⚠リーチ圏(あと14pt)</span><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">11番&nbsp; <a href="https://db.netkeiba.com/horse/2021104233" target="_blank" style="color:inherit;text-decoration:none">ヴァンビー</a></div>
+<div class="horse-sub">セ5歳  格:C1</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 1049pt → B3ライン:1100pt
+     (あと51pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-reach" style="width:95%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+150→昇級!</span><span class="pt-rank-item breakthrough">2着+60→昇級!</span><span class="pt-rank-item">3着+38</span><span class="pt-rank-item">4着+23</span><span class="pt-rank-item">5着+15</span></div>
+<div class="badges"><span class="badge badge-reach-warn">⚠リーチ圏(あと51pt)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">12番&nbsp; <a href="https://db.netkeiba.com/horse/2021100348" target="_blank" style="color:inherit;text-decoration:none">ゼイトク</a></div>
+<div class="horse-sub">牡5歳  格:B3</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">B3 1115pt → B2ライン:1500pt
+     (あと385pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:74%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+150</span><span class="pt-rank-item">2着+60</span><span class="pt-rank-item">3着+38</span><span class="pt-rank-item">4着+23</span><span class="pt-rank-item">5着+15</span></div>
+<div class="badges"><span class="badge badge-in">イン差し(56%)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">13番&nbsp; <a href="https://db.netkeiba.com/horse/2022107045" target="_blank" style="color:inherit;text-decoration:none">クアッズ</a></div>
+<div class="horse-sub">セ4歳  格:C1</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 777pt → B3ライン:900pt
+     (あと123pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:86%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+150→昇級!</span><span class="pt-rank-item">2着+60</span><span class="pt-rank-item">3着+38</span><span class="pt-rank-item">4着+23</span><span class="pt-rank-item">5着+15</span></div>
+
+</div><div class="horse-row">
+<div class="horse-name">14番&nbsp; <a href="https://db.netkeiba.com/horse/2021103546" target="_blank" style="color:inherit;text-decoration:none">ペルセイズ</a></div>
+<div class="horse-sub">セ5歳  格:C1</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 1066pt → B3ライン:1100pt
+     (あと34pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-reach" style="width:96%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+150→昇級!</span><span class="pt-rank-item breakthrough">2着+60→昇級!</span><span class="pt-rank-item breakthrough">3着+38→昇級!</span><span class="pt-rank-item">4着+23</span><span class="pt-rank-item">5着+15</span></div>
+<div class="badges"><span class="badge badge-reach-warn">⚠リーチ圏(あと34pt)</span><span class="badge badge-in">イン差し(73%)</span></div>
+</div>
+</div>
+<div class="race-block">
+<div class="race-header">東京スポーツ賞競走 出馬表 | 2026年7月24日 大井11R 地方競馬レース情報 - netkeiba (1400m B3 16頭)</div>
+<div class="race-pt-row">付与ポイント: 1着+240pt / 2着+96pt / 3着+60pt / 4着+36pt / 5着+24pt</div>
+<div class="horse-row">
+<div class="horse-name">1番&nbsp; <a href="https://db.netkeiba.com/horse/2021100231" target="_blank" style="color:inherit;text-decoration:none">レジェンドウェイ</a></div>
+<div class="horse-sub">セ5歳  格:B3</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">B3 1313pt → B2ライン:1500pt
+     (あと187pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:87%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+240→昇級!</span><span class="pt-rank-item">2着+96</span><span class="pt-rank-item">3着+60</span><span class="pt-rank-item">4着+36</span><span class="pt-rank-item">5着+24</span></div>
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span><span class="badge badge-in">イン差し(64%)</span><span class="badge badge-bio">★5割復帰</span></div>
+</div><div class="horse-row">
+<div class="horse-name">2番&nbsp; <a href="https://db.netkeiba.com/horse/2021109079" target="_blank" style="color:inherit;text-decoration:none">チャダルクン</a></div>
+<div class="horse-sub">牡5歳  格:B3</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">B3 1464pt → B2ライン:1500pt
+     (あと36pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-reach" style="width:97%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+240→昇級!</span><span class="pt-rank-item breakthrough">2着+96→昇級!</span><span class="pt-rank-item breakthrough">3着+60→昇級!</span><span class="pt-rank-item breakthrough">4着+36→昇級!</span><span class="pt-rank-item">5着+24</span></div>
+<div class="badges"><span class="badge badge-reach-warn">⚠リーチ圏(あと36pt)</span><span class="badge badge-in">イン差し(67%)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">3番&nbsp; <a href="https://db.netkeiba.com/horse/2021103044" target="_blank" style="color:inherit;text-decoration:none">ユニヴェール</a></div>
+<div class="horse-sub">セ5歳  格:B3</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">B3 1134pt → B2ライン:1500pt
+     (あと366pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:75%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+240</span><span class="pt-rank-item">2着+96</span><span class="pt-rank-item">3着+60</span><span class="pt-rank-item">4着+36</span><span class="pt-rank-item">5着+24</span></div>
+<div class="badges"><span class="badge badge-in">イン差し(57%)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">4番&nbsp; <a href="https://db.netkeiba.com/horse/2022106993" target="_blank" style="color:inherit;text-decoration:none">アルミンテソーロ</a></div>
+<div class="horse-sub">牡4歳  格:B3</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">B3 939pt → B2ライン:1300pt
+     (あと361pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:72%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+240</span><span class="pt-rank-item">2着+96</span><span class="pt-rank-item">3着+60</span><span class="pt-rank-item">4着+36</span><span class="pt-rank-item">5着+24</span></div>
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span><span class="badge badge-in">イン差し(67%)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">5番&nbsp; <a href="https://db.netkeiba.com/horse/2023110051" target="_blank" style="color:inherit;text-decoration:none">ドナシェーン</a></div>
+<div class="horse-sub">牝3歳  格:B3</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">B3 960pt → B2ライン:1200pt
+     (あと240pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:80%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+240→昇級!</span><span class="pt-rank-item">2着+96</span><span class="pt-rank-item">3着+60</span><span class="pt-rank-item">4着+36</span><span class="pt-rank-item">5着+24</span></div>
+
+</div><div class="horse-row">
+<div class="horse-name">6番&nbsp; <a href="https://db.netkeiba.com/horse/2020100541" target="_blank" style="color:inherit;text-decoration:none">ドゥーロアバンティ</a></div>
+<div class="horse-sub">牡6歳  格:B3</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">B3 1604pt → B2ライン:1800pt
+     (あと196pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:89%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+240→昇級!</span><span class="pt-rank-item">2着+96</span><span class="pt-rank-item">3着+60</span><span class="pt-rank-item">4着+36</span><span class="pt-rank-item">5着+24</span></div>
+
+</div><div class="horse-row">
+<div class="horse-name">7番&nbsp; <a href="https://db.netkeiba.com/horse/2020102578" target="_blank" style="color:inherit;text-decoration:none">オソルノ</a></div>
+<div class="horse-sub">セ6歳  格:B3</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">B3 1497pt → B2ライン:1800pt
+     (あと303pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:83%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+240</span><span class="pt-rank-item">2着+96</span><span class="pt-rank-item">3着+60</span><span class="pt-rank-item">4着+36</span><span class="pt-rank-item">5着+24</span></div>
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">8番&nbsp; <a href="https://db.netkeiba.com/horse/2021106945" target="_blank" style="color:inherit;text-decoration:none">イタロ</a></div>
+<div class="horse-sub">牡5歳  格:B3</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">B3 1122pt → B2ライン:1500pt
+     (あと378pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:74%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+240</span><span class="pt-rank-item">2着+96</span><span class="pt-rank-item">3着+60</span><span class="pt-rank-item">4着+36</span><span class="pt-rank-item">5着+24</span></div>
+<div class="badges"><span class="badge badge-in">イン差し(56%)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">9番&nbsp; <a href="https://db.netkeiba.com/horse/2022101523" target="_blank" style="color:inherit;text-decoration:none">カセノタイガー</a></div>
+<div class="horse-sub">牡4歳  格:B3</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">B3 1182pt → B2ライン:1300pt
+     (あと118pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:90%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+240→昇級!</span><span class="pt-rank-item">2着+96</span><span class="pt-rank-item">3着+60</span><span class="pt-rank-item">4着+36</span><span class="pt-rank-item">5着+24</span></div>
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">10番&nbsp; <a href="https://db.netkeiba.com/horse/2022106468" target="_blank" style="color:inherit;text-decoration:none">グラスグリード</a></div>
+<div class="horse-sub">牡4歳  格:B3</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">B3 1072pt → B2ライン:1300pt
+     (あと228pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:82%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+240→昇級!</span><span class="pt-rank-item">2着+96</span><span class="pt-rank-item">3着+60</span><span class="pt-rank-item">4着+36</span><span class="pt-rank-item">5着+24</span></div>
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span><span class="badge badge-bio">★5割復帰</span></div>
+</div><div class="horse-row">
+<div class="horse-name">11番&nbsp; <a href="https://db.netkeiba.com/horse/2022101635" target="_blank" style="color:inherit;text-decoration:none">ホワイトマジック</a></div>
+<div class="horse-sub">牡4歳  格:B2</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">B2 1429pt → B1ライン:1800pt
+     (あと371pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:79%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+240</span><span class="pt-rank-item">2着+96</span><span class="pt-rank-item">3着+60</span><span class="pt-rank-item">4着+36</span><span class="pt-rank-item">5着+24</span></div>
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span><span class="badge badge-in">イン差し(80%)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">12番&nbsp; <a href="https://db.netkeiba.com/horse/2020105919" target="_blank" style="color:inherit;text-decoration:none">エルツ</a></div>
+<div class="horse-sub">牡6歳  格:B2</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">B2 1840pt → B1ライン:2500pt
+     (あと660pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:73%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+240</span><span class="pt-rank-item">2着+96</span><span class="pt-rank-item">3着+60</span><span class="pt-rank-item">4着+36</span><span class="pt-rank-item">5着+24</span></div>
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span><span class="badge badge-in">イン差し(62%)</span><span class="badge badge-bio">★5割復帰</span></div>
+</div><div class="horse-row">
+<div class="horse-name">13番&nbsp; <a href="https://db.netkeiba.com/horse/2018101874" target="_blank" style="color:inherit;text-decoration:none">ラペルシェール</a></div>
+<div class="horse-sub">牡8歳  格:B3</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">B3 2018pt → B2ライン:2200pt
+     (あと182pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:91%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+240→昇級!</span><span class="pt-rank-item">2着+96</span><span class="pt-rank-item">3着+60</span><span class="pt-rank-item">4着+36</span><span class="pt-rank-item">5着+24</span></div>
+
+</div><div class="horse-row">
+<div class="horse-name">14番&nbsp; <a href="https://db.netkeiba.com/horse/2023104833" target="_blank" style="color:inherit;text-decoration:none">ナギサノルナ</a></div>
+<div class="horse-sub">牝3歳  格:B3</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">B3 1017pt → B2ライン:1200pt
+     (あと183pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:84%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+240→昇級!</span><span class="pt-rank-item">2着+96</span><span class="pt-rank-item">3着+60</span><span class="pt-rank-item">4着+36</span><span class="pt-rank-item">5着+24</span></div>
+<div class="badges"><span class="badge badge-in">イン差し(86%)</span><span class="badge badge-bio">★5割復帰</span></div>
+</div><div class="horse-row">
+<div class="horse-name">15番&nbsp; <a href="https://db.netkeiba.com/horse/2022104269" target="_blank" style="color:inherit;text-decoration:none">ベイビーゲート</a></div>
+<div class="horse-sub">牡4歳  格:B3</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">B3 966pt → B2ライン:1300pt
+     (あと334pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:74%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+240</span><span class="pt-rank-item">2着+96</span><span class="pt-rank-item">3着+60</span><span class="pt-rank-item">4着+36</span><span class="pt-rank-item">5着+24</span></div>
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span><span class="badge badge-in">イン差し(67%)</span><span class="badge badge-bio">★5割復帰</span></div>
+</div><div class="horse-row">
+<div class="horse-name">16番&nbsp; <a href="https://db.netkeiba.com/horse/2019100222" target="_blank" style="color:inherit;text-decoration:none">ウインアイリーン</a></div>
+<div class="horse-sub">牝7歳  格:B3</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">B3 1762pt → B2ライン:2100pt
+     (あと338pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:83%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+240</span><span class="pt-rank-item">2着+96</span><span class="pt-rank-item">3着+60</span><span class="pt-rank-item">4着+36</span><span class="pt-rank-item">5着+24</span></div>
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span><span class="badge badge-in">イン差し(75%)</span><span class="badge badge-bio">★5割復帰</span></div>
+</div>
+</div>
+<div class="race-block skip">
+<div class="race-header">いて座特別競走 出馬表 | 2026年7月24日 大井12R 地方競馬レース情報 - netkeiba (1200m C1 9頭)</div>
+<div class="race-skip-bar"><span class="skip-label">🚫 見送り</span><span class="skip-reason">1200m=短距離</span></div><div class="race-pt-row">付与ポイント: 1着+200pt / 2着+80pt / 3着+50pt / 4着+30pt / 5着+20pt</div>
+<div class="horse-row">
+<div class="horse-name">1番&nbsp; <a href="https://db.netkeiba.com/horse/2021103509" target="_blank" style="color:inherit;text-decoration:none">トーケンレナン</a></div>
+<div class="horse-sub">牡5歳  格:C1</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 1029pt → B3ライン:1100pt
+     (あと71pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:93%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+200→昇級!</span><span class="pt-rank-item breakthrough">2着+80→昇級!</span><span class="pt-rank-item">3着+50</span><span class="pt-rank-item">4着+30</span><span class="pt-rank-item">5着+20</span></div>
+<div class="badges"><span class="badge badge-reach-warn">⚠リーチ圏(あと71pt)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">2番&nbsp; <a href="https://db.netkeiba.com/horse/2019102672" target="_blank" style="color:inherit;text-decoration:none">バレル</a></div>
+<div class="horse-sub">牡7歳  格:C1</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 1686pt → B3ライン:1700pt
+     (あと14pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-reach" style="width:99%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+200→昇級!</span><span class="pt-rank-item breakthrough">2着+80→昇級!</span><span class="pt-rank-item breakthrough">3着+50→昇級!</span><span class="pt-rank-item breakthrough">4着+30→昇級!</span><span class="pt-rank-item breakthrough">5着+20→昇級!</span></div>
+<div class="badges"><span class="badge badge-reach-warn">⚠リーチ圏(あと14pt)</span><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">3番&nbsp; <a href="https://db.netkeiba.com/horse/2019106559" target="_blank" style="color:inherit;text-decoration:none">サブノリョウマ</a></div>
+<div class="horse-sub">牡7歳  格:C1</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 1641pt → B3ライン:1700pt
+     (あと59pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-reach" style="width:96%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+200→昇級!</span><span class="pt-rank-item breakthrough">2着+80→昇級!</span><span class="pt-rank-item">3着+50</span><span class="pt-rank-item">4着+30</span><span class="pt-rank-item">5着+20</span></div>
+<div class="badges"><span class="badge badge-reach-warn">⚠リーチ圏(あと59pt)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">4番&nbsp; <a href="https://db.netkeiba.com/horse/2021103434" target="_blank" style="color:inherit;text-decoration:none">ビッティンキバラ</a></div>
+<div class="horse-sub">牡5歳  格:C1</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 1021pt → B3ライン:1100pt
+     (あと79pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:92%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+200→昇級!</span><span class="pt-rank-item breakthrough">2着+80→昇級!</span><span class="pt-rank-item">3着+50</span><span class="pt-rank-item">4着+30</span><span class="pt-rank-item">5着+20</span></div>
+<div class="badges"><span class="badge badge-reach-warn">⚠リーチ圏(あと79pt)</span><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">5番&nbsp; <a href="https://db.netkeiba.com/horse/2020100103" target="_blank" style="color:inherit;text-decoration:none">エイシンネクタル</a></div>
+<div class="horse-sub">牡6歳  格:C1</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 1329pt → B3ライン:1400pt
+     (あと71pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:94%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+200→昇級!</span><span class="pt-rank-item breakthrough">2着+80→昇級!</span><span class="pt-rank-item">3着+50</span><span class="pt-rank-item">4着+30</span><span class="pt-rank-item">5着+20</span></div>
+<div class="badges"><span class="badge badge-reach-warn">⚠リーチ圏(あと71pt)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">6番&nbsp; <a href="https://db.netkeiba.com/horse/2019102317" target="_blank" style="color:inherit;text-decoration:none">シンギングブルース</a></div>
+<div class="horse-sub">牡7歳  格:B3</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">B3 1780pt → B2ライン:2100pt
+     (あと320pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:84%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+200</span><span class="pt-rank-item">2着+80</span><span class="pt-rank-item">3着+50</span><span class="pt-rank-item">4着+30</span><span class="pt-rank-item">5着+20</span></div>
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span><span class="badge badge-in">イン差し(100%)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">7番&nbsp; <a href="https://db.netkeiba.com/horse/2019104197" target="_blank" style="color:inherit;text-decoration:none">コーミズアムール</a></div>
+<div class="horse-sub">牝7歳  格:C1</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 1629pt → B3ライン:1700pt
+     (あと71pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-reach" style="width:95%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+200→昇級!</span><span class="pt-rank-item breakthrough">2着+80→昇級!</span><span class="pt-rank-item">3着+50</span><span class="pt-rank-item">4着+30</span><span class="pt-rank-item">5着+20</span></div>
+<div class="badges"><span class="badge badge-reach-warn">⚠リーチ圏(あと71pt)</span><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">8番&nbsp; <a href="https://db.netkeiba.com/horse/2022109051" target="_blank" style="color:inherit;text-decoration:none">アフターレヴュー</a></div>
+<div class="horse-sub">牡4歳  格:C1</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 842pt → B3ライン:900pt
+     (あと58pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:93%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+200→昇級!</span><span class="pt-rank-item breakthrough">2着+80→昇級!</span><span class="pt-rank-item">3着+50</span><span class="pt-rank-item">4着+30</span><span class="pt-rank-item">5着+20</span></div>
+<div class="badges"><span class="badge badge-reach-warn">⚠リーチ圏(あと58pt)</span><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span><span class="badge badge-in">イン差し(60%)</span></div>
+</div><div class="horse-row">
+<div class="horse-name">9番&nbsp; <a href="https://db.netkeiba.com/horse/2020101190" target="_blank" style="color:inherit;text-decoration:none">ヤマノウォーリア</a></div>
+<div class="horse-sub">牡6歳  格:C1</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 1385pt → B3ライン:1400pt
+     (あと15pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-reach" style="width:98%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+200→昇級!</span><span class="pt-rank-item breakthrough">2着+80→昇級!</span><span class="pt-rank-item breakthrough">3着+50→昇級!</span><span class="pt-rank-item breakthrough">4着+30→昇級!</span><span class="pt-rank-item breakthrough">5着+20→昇級!</span></div>
+<div class="badges"><span class="badge badge-reach-warn">⚠リーチ圏(あと15pt)</span></div>
+</div>
+</div>
+<div class="footer">Generated by race_judge_nar.py</div>
+</div>
+</body>
+</html>
