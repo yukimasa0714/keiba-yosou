@@ -1,0 +1,1815 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>南関東 ヤラズ判定 20260731</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Helvetica Neue',Arial,sans-serif;background:#f7f7f7;color:#222;font-size:14px}
+.wrap{max-width:860px;margin:0 auto;padding:12px}
+h1{font-size:17px;font-weight:700;margin-bottom:12px;color:#111}
+.race-block{background:#fff;border:1px solid #ddd;border-radius:6px;margin-bottom:18px;overflow:hidden}
+.race-header{background:#1a1a2e;color:#fff;padding:8px 12px;font-size:13px;font-weight:700}
+.horse-row{border-bottom:1px solid #eee;padding:10px 12px}
+.horse-row:last-child{border-bottom:none}
+.horse-name{font-size:15px;font-weight:700;margin-bottom:4px}
+.horse-sub{font-size:12px;color:#666;margin-bottom:6px}
+.pt-bar-wrap{margin:5px 0 3px}
+.pt-bar-label{font-size:12px;color:#444;margin-bottom:2px}
+.pt-bar-outer{height:10px;background:#e0e0e0;border-radius:5px;overflow:hidden;width:100%;max-width:340px}
+.pt-bar-inner{height:10px;border-radius:5px;transition:width 0.3s}
+.bar-safe{background:#4caf50}
+.bar-warn{background:#ff9800}
+.bar-reach{background:#f44336}
+.pt-ranks{font-size:12px;color:#555;margin:4px 0}
+.pt-rank-item{display:inline-block;margin-right:8px}
+.pt-rank-item.breakthrough{color:#f44336;font-weight:700}
+.badges{margin-top:5px;display:flex;flex-wrap:wrap;gap:5px}
+.badge{display:inline-block;padding:2px 8px;border-radius:12px;font-size:11px;font-weight:700}
+.badge-reach{background:#f44336;color:#fff}
+.badge-reach-warn{background:#ff9800;color:#fff}
+.badge-yaradzu{background:#b71c1c;color:#fff}
+.badge-in{background:#1565c0;color:#fff}
+.badge-bio{background:#f9a825;color:#333}
+.badge-line{background:#2e7d32;color:#fff}
+.badge-yaradzu-ake{background:#1b5e20;color:#fff}
+.badge-kuzure{background:#e65100;color:#fff}
+.race-pt-row{padding:5px 12px;font-size:11px;color:#888;background:#f9f9f9;border-bottom:1px solid #eee}
+/* フィルタ・強調 */
+.race-block.skip{opacity:0.45;border-color:#ccc}
+.race-block.skip .race-header{background:#888}
+.race-skip-bar{padding:6px 12px;font-size:12px;color:#888;background:#f4f4f4;border-bottom:1px solid #e0e0e0;display:flex;align-items:center;gap:6px}
+.race-skip-bar .skip-label{font-weight:700}
+.race-skip-bar .skip-reason{font-size:11px}
+.race-block.honsen .race-header{background:#1a3a6b}
+.race-block.daini .race-header{background:#2e5c1e}
+.race-emphasis-bar{padding:5px 12px;font-size:12px;font-weight:700;border-bottom:1px solid #ddd}
+.race-emphasis-bar.honsen{background:#e8f0ff;color:#1a3a6b}
+.race-emphasis-bar.daini{background:#eaf5e8;color:#2e5c1e}
+.badge-honsen{background:#1a3a6b;color:#fff}
+.badge-daini{background:#2e5c1e;color:#fff}
+.footer{text-align:center;color:#aaa;font-size:11px;margin-top:20px;padding-bottom:20px}
+/* 崩れ度グラデーションバー */
+.race-kuzure-bar{padding:6px 12px;font-size:12px;font-weight:700;border-bottom:1px solid #ddd}
+.kuzure-bar-jigan{background:#e8f5e9;color:#1b5e20;border-bottom-color:#a5d6a7}
+.kuzure-bar-mid{background:#fff8e1;color:#5d4037;border-bottom-color:#ffe082}
+.kuzure-bar-nobita{background:#fbe9e7;color:#bf360c;border-bottom-color:#ffab91}
+.horse-row.missing{opacity:0.4}
+.badge-missing{background:#bdbdbd;color:#fff}
+/* 印 */
+.imp{display:inline-block;width:28px;height:28px;line-height:28px;text-align:center;border-radius:50%;font-size:15px;font-weight:900;margin-right:6px;vertical-align:middle}
+.imp-hon{background:#e53935;color:#fff}
+.imp-niban{background:#1e88e5;color:#fff}
+.imp-san{background:#43a047;color:#fff}
+.imp-kesi{background:#555;color:#fff}
+.imp-muji{background:#e0e0e0;color:#888}
+/* 推奨行ハイライト */
+.horse-row.hon{background:#fff8f8;border-left:4px solid #e53935}
+.horse-row.niban{background:#f5f9ff;border-left:4px solid #1e88e5}
+.horse-row.san{background:#f5fff5;border-left:4px solid #43a047}
+.horse-row.kesi{background:#f5f5f5;opacity:0.7}
+/* 複勝率バー */
+.fuku-est{font-size:12px;color:#333;margin:4px 0 2px;display:flex;align-items:center;gap:8px}
+.fuku-bar-outer{height:8px;background:#e0e0e0;border-radius:4px;width:160px;overflow:hidden}
+.fuku-bar-inner{height:8px;border-radius:4px}
+.fuku-bar-low{background:#90a4ae}
+.fuku-bar-mid{background:#66bb6a}
+.fuku-bar-high{background:#ef5350}
+/* 印+馬名ヘッダ行 */
+.horse-head{display:flex;align-items:center;margin-bottom:4px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>南関東 ヤラズ判定レポート 20260731</h1>
+<div style="background:#fff;border:1px solid #ddd;border-radius:6px;padding:10px 14px;margin-bottom:16px;font-size:13px;">本日 <b>12レース</b> 中 <b style="color:#1a3a6b">4レース(33%)が買い対象</b> / 見送り8レース</div><div class="race-block skip">
+<div class="race-header">C3五 出馬表 | 2026年7月31日 川崎1R 地方競馬レース情報 - netkeiba (1400m C3 9頭)</div>
+<div class="race-skip-bar"><span class="skip-label">🚫 見送り推奨</span><span class="skip-reason">C3=ヤラズ勢多数/頭打ち馬多い</span></div><div class="race-pt-row">付与ポイント: 1着+80pt / 2着+32pt / 3着+20pt / 4着+12pt / 5着+8pt</div>
+<div class="horse-row san">
+<div class="horse-head"><span class="imp imp-san">△</span><span class="horse-name" style="margin:0">1番&nbsp; <a href="https://db.netkeiba.com/horse/2019106509" target="_blank" style="color:inherit;text-decoration:none">マイアイガー</a></span></div>
+<div class="horse-sub">牡7歳  格:C3</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>8%</b>  (接戦0.4s(+9) / 4人気)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:17%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C3 773pt → C2ライン:1100pt
+     (あと327pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:70%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+80</span><span class="pt-rank-item">2着+32</span><span class="pt-rank-item">3着+20</span><span class="pt-rank-item">4着+12</span><span class="pt-rank-item">5着+8</span></div>
+
+</div><div class="horse-row hon">
+<div class="horse-head"><span class="imp imp-hon">◎</span><span class="horse-name" style="margin:0">2番&nbsp; <a href="https://db.netkeiba.com/horse/2019100100" target="_blank" style="color:inherit;text-decoration:none">キーファイン</a></span></div>
+<div class="horse-sub">牝7歳  格:C3</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>51%</b>  (前走1着(同級+25) 上がり上位34%(+6) 複勝60% 平均3.8着 / 1人気(先行注意) / イン差し)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-high" style="width:100%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C3 802pt → C2ライン:1100pt
+     (あと298pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:72%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+80</span><span class="pt-rank-item">2着+32</span><span class="pt-rank-item">3着+20</span><span class="pt-rank-item">4着+12</span><span class="pt-rank-item">5着+8</span></div>
+<div class="badges"><span class="badge badge-in">イン差し(62%)</span></div>
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">3番&nbsp; <a href="https://db.netkeiba.com/horse/2022104027" target="_blank" style="color:inherit;text-decoration:none">クリナデシコ</a></span></div>
+<div class="horse-sub">牝4歳  格:C3</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>8%</b>  (力負け3.6s(-5) 上がり最下位1%(-6))</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:17%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C3 113pt → C2ライン:300pt
+     (あと187pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:37%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+80</span><span class="pt-rank-item">2着+32</span><span class="pt-rank-item">3着+20</span><span class="pt-rank-item">4着+12</span><span class="pt-rank-item">5着+8</span></div>
+
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">4番&nbsp; <a href="https://db.netkeiba.com/horse/2020100869" target="_blank" style="color:inherit;text-decoration:none">カラルナ</a></span></div>
+<div class="horse-sub">牝6歳  格:C3</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>8%</b>  (力負け2.7s(-5) 上がり最下位10%(-6))</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:17%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C3 298pt → C2ライン:800pt
+     (あと502pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:37%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+80</span><span class="pt-rank-item">2着+32</span><span class="pt-rank-item">3着+20</span><span class="pt-rank-item">4着+12</span><span class="pt-rank-item">5着+8</span></div>
+
+</div><div class="horse-row san">
+<div class="horse-head"><span class="imp imp-san">△</span><span class="horse-name" style="margin:0">5番&nbsp; <a href="https://db.netkeiba.com/horse/2022103701" target="_blank" style="color:inherit;text-decoration:none">ゴームズ</a></span></div>
+<div class="horse-sub">牝4歳  格:C3</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>25%</b>  (3人気(本命))</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-high" style="width:55%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C3 136pt → C2ライン:300pt
+     (あと164pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:45%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+80</span><span class="pt-rank-item">2着+32</span><span class="pt-rank-item">3着+20</span><span class="pt-rank-item">4着+12</span><span class="pt-rank-item">5着+8</span></div>
+
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">6番&nbsp; <a href="https://db.netkeiba.com/horse/2020104023" target="_blank" style="color:inherit;text-decoration:none">バーサズバラード</a></span></div>
+<div class="horse-sub">牝6歳  格:C3</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>8%</b>  (力負け4.8s(-5) 上がり最下位1%(-6))</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:17%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C3 273pt → C2ライン:800pt
+     (あと527pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:34%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+80</span><span class="pt-rank-item">2着+32</span><span class="pt-rank-item">3着+20</span><span class="pt-rank-item">4着+12</span><span class="pt-rank-item">5着+8</span></div>
+
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">7番&nbsp; <a href="https://db.netkeiba.com/horse/2022107169" target="_blank" style="color:inherit;text-decoration:none">ダイユウルージュ</a></span></div>
+<div class="horse-sub">牝4歳  格:C3</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>28%</b>  (力負け2.7s(-5) 上がり最下位9%(-6) 複勝33% / 5人気)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-high" style="width:62%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C3 155pt → C2ライン:300pt
+     (あと145pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:51%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+80</span><span class="pt-rank-item">2着+32</span><span class="pt-rank-item">3着+20</span><span class="pt-rank-item">4着+12</span><span class="pt-rank-item">5着+8</span></div>
+
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">8番&nbsp; <a href="https://db.netkeiba.com/horse/2022103360" target="_blank" style="color:inherit;text-decoration:none">ミカエンブレイス</a></span></div>
+<div class="horse-sub">牝4歳  格:C3</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>8%</b>  (接戦0.5s(+9) 上がり下位34%(-3) / 6人気)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:17%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C3 143pt → C2ライン:300pt
+     (あと157pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:47%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+80</span><span class="pt-rank-item">2着+32</span><span class="pt-rank-item">3着+20</span><span class="pt-rank-item">4着+12</span><span class="pt-rank-item">5着+8</span></div>
+
+</div><div class="horse-row niban">
+<div class="horse-head"><span class="imp imp-niban">○</span><span class="horse-name" style="margin:0">9番&nbsp; <a href="https://db.netkeiba.com/horse/2021105332" target="_blank" style="color:inherit;text-decoration:none">マイブリッジ</a></span></div>
+<div class="horse-sub">牡5歳  格:C3</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>60%</b>  (惜敗0.1s(+18) 上がり上位23%(+6) 複勝71% 平均3.6着 / 2人気(先行注意))</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-high" style="width:100%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C3 220pt → C2ライン:500pt
+     (あと280pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:44%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+80</span><span class="pt-rank-item">2着+32</span><span class="pt-rank-item">3着+20</span><span class="pt-rank-item">4着+12</span><span class="pt-rank-item">5着+8</span></div>
+
+</div>
+</div>
+<div class="race-block skip">
+<div class="race-header">3歳8 出馬表 | 2026年7月31日 川崎2R 地方競馬レース情報 - netkeiba (1400m ? 11頭)</div>
+<div class="race-skip-bar"><span class="skip-label">🚫 見送り推奨</span><span class="skip-reason">3歳/2歳戦=クラス未確定</span></div>
+<div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">1番&nbsp; <a href="https://db.netkeiba.com/horse/2023104911" target="_blank" style="color:inherit;text-decoration:none">クロムブレイズ</a></span></div>
+<div class="horse-sub">牝3歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>6%</b>  (力負け2.1s(-5) / 先行危険)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:13%"></div></div>
+</div>
+
+
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row san">
+<div class="horse-head"><span class="imp imp-san">△</span><span class="horse-name" style="margin:0">2番&nbsp; <a href="https://db.netkeiba.com/horse/2023102578" target="_blank" style="color:inherit;text-decoration:none">サラサドール</a></span></div>
+<div class="horse-sub">牝3歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>8%</b>  (5人気)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:17%"></div></div>
+</div>
+
+
+
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">3番&nbsp; <a href="https://db.netkeiba.com/horse/2023107445" target="_blank" style="color:inherit;text-decoration:none">キューティパエトン</a></span></div>
+<div class="horse-sub">牝3歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>6%</b>  (3人気(先行割引) / 先行危険)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:13%"></div></div>
+</div>
+
+
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">4番&nbsp; <a href="https://db.netkeiba.com/horse/2023105674" target="_blank" style="color:inherit;text-decoration:none">ベリルキャッツアイ</a></span></div>
+<div class="horse-sub">牡3歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>6%</b>  (1人気(先行割引) / 先行危険)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:13%"></div></div>
+</div>
+
+
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">5番&nbsp; <a href="https://db.netkeiba.com/horse/2023100257" target="_blank" style="color:inherit;text-decoration:none">ターボクン</a></span></div>
+<div class="horse-sub">牡3歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>8%</b>  (力負け3.3s(-5) 上がり最下位1%(-6))</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:17%"></div></div>
+</div>
+
+
+
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">6番&nbsp; <a href="https://db.netkeiba.com/horse/2023102441" target="_blank" style="color:inherit;text-decoration:none">ワイズブレイズ</a></span></div>
+<div class="horse-sub">牡3歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>8%</b></span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:17%"></div></div>
+</div>
+
+
+
+</div><div class="horse-row hon">
+<div class="horse-head"><span class="imp imp-hon">◎</span><span class="horse-name" style="margin:0">7番&nbsp; <a href="https://db.netkeiba.com/horse/2023106038" target="_blank" style="color:inherit;text-decoration:none">ゴーゴールイス</a></span></div>
+<div class="horse-sub">セ3歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>22%</b>  (2人気(やや本命))</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-high" style="width:48%"></div></div>
+</div>
+
+
+
+</div><div class="horse-row niban">
+<div class="horse-head"><span class="imp imp-niban">○</span><span class="horse-name" style="margin:0">8番&nbsp; <a href="https://db.netkeiba.com/horse/2023100847" target="_blank" style="color:inherit;text-decoration:none">リュウノミナミ</a></span></div>
+<div class="horse-sub">牝3歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>17%</b>  (上がり下位34%(-3) 複勝20% / 6人気)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-mid" style="width:37%"></div></div>
+</div>
+
+
+
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">9番&nbsp; <a href="https://db.netkeiba.com/horse/2023106527" target="_blank" style="color:inherit;text-decoration:none">シェブロンウーマン</a></span></div>
+<div class="horse-sub">牝3歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>10%</b>  (力負け3.4s(-5) 上がり最下位10%(-6))</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:22%"></div></div>
+</div>
+
+
+
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">10番&nbsp; <a href="https://db.netkeiba.com/horse/2023107391" target="_blank" style="color:inherit;text-decoration:none">クォリティショコラ</a></span></div>
+<div class="horse-sub">牝3歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>6%</b>  (4人気 / 先行危険)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:13%"></div></div>
+</div>
+
+
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row san">
+<div class="horse-head"><span class="imp imp-san">△</span><span class="horse-name" style="margin:0">11番&nbsp; <a href="https://db.netkeiba.com/horse/2023106309" target="_blank" style="color:inherit;text-decoration:none">タイトノット</a></span></div>
+<div class="horse-sub">牡3歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>8%</b>  (力負け2.1s(-5) 上がり上位41%(+6))</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:17%"></div></div>
+</div>
+
+
+
+</div>
+</div>
+<div class="race-block skip">
+<div class="race-header">アーベントロート賞 出馬表 | 2026年7月31日 川崎3R 地方競馬レース情報 - netkeiba (900m ? 12頭)</div>
+<div class="race-skip-bar"><span class="skip-label">🚫 見送り推奨</span><span class="skip-reason">900m=短距離</span></div>
+<div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">1番&nbsp; <a href="https://db.netkeiba.com/horse/2023109068" target="_blank" style="color:inherit;text-decoration:none">ムジークヘーレン</a></span></div>
+<div class="horse-sub">牝3歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>17%</b>  (力負け1.8s(-5) 上がり最下位1%(-6) 複勝20%)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-mid" style="width:37%"></div></div>
+</div>
+
+
+
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">2番&nbsp; <a href="https://db.netkeiba.com/horse/2023106032" target="_blank" style="color:inherit;text-decoration:none">アンジュベル</a></span></div>
+<div class="horse-sub">牝3歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>26%</b>  (力負け3.1s(-5) 上がり最下位1%(-6) 複勝33% / 3人気(先行崩れ警戒) / 先行危険)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-high" style="width:57%"></div></div>
+</div>
+
+
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row niban">
+<div class="horse-head"><span class="imp imp-niban">○</span><span class="horse-name" style="margin:0">3番&nbsp; <a href="https://db.netkeiba.com/horse/2023100449" target="_blank" style="color:inherit;text-decoration:none">プリンセスサミット</a></span></div>
+<div class="horse-sub">牝3歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>49%</b>  (惜敗0.1s(+18) 上がり上位23%(+6) 複勝60% 平均4.6着 / 1人気(先行崩れ警戒) / イン差し / 先行危険)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-high" style="width:100%"></div></div>
+</div>
+
+
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span><span class="badge badge-in">イン差し(60%)</span></div>
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">4番&nbsp; <a href="https://db.netkeiba.com/horse/2023107504" target="_blank" style="color:inherit;text-decoration:none">アッチョンブリケ</a></span></div>
+<div class="horse-sub">牝3歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>6%</b>  (4人気(中穴)) / 先行危険)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:13%"></div></div>
+</div>
+
+
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">5番&nbsp; <a href="https://db.netkeiba.com/horse/2023103987" target="_blank" style="color:inherit;text-decoration:none">ホワイトフジ</a></span></div>
+<div class="horse-sub">牡3歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>17%</b>  (力負け2.6s(-5) 上がり下位34%(-3) 複勝20%)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-mid" style="width:37%"></div></div>
+</div>
+
+
+
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">6番&nbsp; <a href="https://db.netkeiba.com/horse/2023106538" target="_blank" style="color:inherit;text-decoration:none">ハーバーショー</a></span></div>
+<div class="horse-sub">牡3歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>22%</b>  (力負け5.4s(-5) 上がり最下位1%(-6) 複勝28% / 5割復帰 / 先行危険)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-high" style="width:48%"></div></div>
+</div>
+
+
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span><span class="badge badge-bio">★5割復帰</span></div>
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">7番&nbsp; <a href="https://db.netkeiba.com/horse/2023105135" target="_blank" style="color:inherit;text-decoration:none">ロックマイソウル</a></span></div>
+<div class="horse-sub">牡3歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>6%</b>  (2人気(先行崩れ警戒) / 先行危険)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:13%"></div></div>
+</div>
+
+
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">8番&nbsp; <a href="https://db.netkeiba.com/horse/2023106594" target="_blank" style="color:inherit;text-decoration:none">シンデレラリバティ</a></span></div>
+<div class="horse-sub">牝3歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>8%</b></span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:17%"></div></div>
+</div>
+
+
+
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">9番&nbsp; <a href="https://db.netkeiba.com/horse/2023100754" target="_blank" style="color:inherit;text-decoration:none">エストレーラヘーザ</a></span></div>
+<div class="horse-sub">牝3歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>14%</b>  (力負け7.2s(-5) 上がり最下位1%(-6))</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-mid" style="width:31%"></div></div>
+</div>
+
+
+
+</div><div class="horse-row hon">
+<div class="horse-head"><span class="imp imp-hon">◎</span><span class="horse-name" style="margin:0">10番&nbsp; <a href="https://db.netkeiba.com/horse/2023102508" target="_blank" style="color:inherit;text-decoration:none">ダイリュウラッキー</a></span></div>
+<div class="horse-sub">牡3歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>17%</b>  (前走1着(同級+25) 上がり上位34%(+6) 複勝20% 平均4.6着 / 5人気(中穴)))</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-mid" style="width:37%"></div></div>
+</div>
+
+
+
+</div><div class="horse-row san">
+<div class="horse-head"><span class="imp imp-san">△</span><span class="horse-name" style="margin:0">11番&nbsp; <a href="https://db.netkeiba.com/horse/2023104219" target="_blank" style="color:inherit;text-decoration:none">ディーズメソッド</a></span></div>
+<div class="horse-sub">牝3歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>10%</b>  (接戦0.4s(+9) / 6人気(中穴)))</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:22%"></div></div>
+</div>
+
+
+
+</div><div class="horse-row san">
+<div class="horse-head"><span class="imp imp-san">△</span><span class="horse-name" style="margin:0">12番&nbsp; <a href="https://db.netkeiba.com/horse/2023101547" target="_blank" style="color:inherit;text-decoration:none">ハリッサ</a></span></div>
+<div class="horse-sub">牝3歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>8%</b>  (力負け2.4s(-5) 上がり上位28%(+6))</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:17%"></div></div>
+</div>
+
+
+
+</div>
+</div>
+<div class="race-block skip">
+<div class="race-header">スパーキングデビュー 出馬表 | 2026年7月31日 川崎4R 地方競馬レース情報 - netkeiba (1400m ? 8頭)</div>
+<div class="race-skip-bar"><span class="skip-label">🚫 見送り推奨</span><span class="skip-reason">8頭=小頭数</span></div>
+<div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">1番&nbsp; <a href="https://db.netkeiba.com/horse/2024108165" target="_blank" style="color:inherit;text-decoration:none">サンクルネージュ</a></span></div>
+<div class="horse-sub">牡2歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>6%</b>  (3人気(先行崩れ警戒) / 先行危険)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:13%"></div></div>
+</div>
+
+
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row hon">
+<div class="horse-head"><span class="imp imp-hon">◎</span><span class="horse-name" style="margin:0">2番&nbsp; <a href="https://db.netkeiba.com/horse/2024102625" target="_blank" style="color:inherit;text-decoration:none">オズ</a></span></div>
+<div class="horse-sub">牡2歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>8%</b>  (5人気(中穴)))</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:17%"></div></div>
+</div>
+
+
+
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">3番&nbsp; <a href="https://db.netkeiba.com/horse/2024101067" target="_blank" style="color:inherit;text-decoration:none">メガアイマシタネ</a></span></div>
+<div class="horse-sub">牝2歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>6%</b>  (6人気(中穴)) / 先行危険)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:13%"></div></div>
+</div>
+
+
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">4番&nbsp; <a href="https://db.netkeiba.com/horse/2024100739" target="_blank" style="color:inherit;text-decoration:none">アレグロボニータ</a></span></div>
+<div class="horse-sub">牝2歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>6%</b>  (先行危険)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:13%"></div></div>
+</div>
+
+
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">5番&nbsp; <a href="https://db.netkeiba.com/horse/2024106808" target="_blank" style="color:inherit;text-decoration:none">クレバーパイン</a></span></div>
+<div class="horse-sub">牡2歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>6%</b>  (1人気(先行崩れ警戒) / 先行危険)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:13%"></div></div>
+</div>
+
+
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">6番&nbsp; <a href="https://db.netkeiba.com/horse/2024104665" target="_blank" style="color:inherit;text-decoration:none">クリスタルシー</a></span></div>
+<div class="horse-sub">牝2歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>8%</b>  (2人気(本命割引))</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:17%"></div></div>
+</div>
+
+
+
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">7番&nbsp; <a href="https://db.netkeiba.com/horse/2024105688" target="_blank" style="color:inherit;text-decoration:none">ワイルドサミット</a></span></div>
+<div class="horse-sub">牡2歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>6%</b>  (4人気(中穴)) / 先行危険)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:13%"></div></div>
+</div>
+
+
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">8番&nbsp; <a href="https://db.netkeiba.com/horse/2024104549" target="_blank" style="color:inherit;text-decoration:none">デイデイト</a></span></div>
+<div class="horse-sub">牡2歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>8%</b></span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:17%"></div></div>
+</div>
+
+
+
+</div>
+</div>
+<div class="race-block skip">
+<div class="race-header">スパーキングデビュー 出馬表 | 2026年7月31日 川崎5R 地方競馬レース情報 - netkeiba (1400m ? 7頭)</div>
+<div class="race-skip-bar"><span class="skip-label">🚫 見送り推奨</span><span class="skip-reason">7頭=小頭数</span></div>
+<div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">1番&nbsp; <a href="https://db.netkeiba.com/horse/2024101021" target="_blank" style="color:inherit;text-decoration:none">ドコフクカゼ</a></span></div>
+<div class="horse-sub">牝2歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>8%</b>  (3人気(本命割引))</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:17%"></div></div>
+</div>
+
+
+
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">2番&nbsp; <a href="https://db.netkeiba.com/horse/2024100395" target="_blank" style="color:inherit;text-decoration:none">チャンピオンウルフ</a></span></div>
+<div class="horse-sub">牡2歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>6%</b>  (1人気(先行崩れ警戒) / 先行危険)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:13%"></div></div>
+</div>
+
+
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row hon">
+<div class="horse-head"><span class="imp imp-hon">◎</span><span class="horse-name" style="margin:0">3番&nbsp; <a href="https://db.netkeiba.com/horse/2024102412" target="_blank" style="color:inherit;text-decoration:none">デオウィザード</a></span></div>
+<div class="horse-sub">牡2歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>8%</b>  (6人気(中穴)))</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:17%"></div></div>
+</div>
+
+
+
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">4番&nbsp; <a href="https://db.netkeiba.com/horse/2024101048" target="_blank" style="color:inherit;text-decoration:none">ムリムリカタツムリ</a></span></div>
+<div class="horse-sub">牡2歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>6%</b>  (5人気(中穴)) / 先行危険)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:13%"></div></div>
+</div>
+
+
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">5番&nbsp; <a href="https://db.netkeiba.com/horse/2024103492" target="_blank" style="color:inherit;text-decoration:none">デイトリッパー</a></span></div>
+<div class="horse-sub">牡2歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>6%</b>  (2人気(先行崩れ警戒) / 先行危険)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:13%"></div></div>
+</div>
+
+
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">6番&nbsp; <a href="https://db.netkeiba.com/horse/2024108153" target="_blank" style="color:inherit;text-decoration:none">クマサンファミリー</a></span></div>
+<div class="horse-sub">牝2歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>6%</b>  (4人気(中穴)) / 先行危険)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:13%"></div></div>
+</div>
+
+
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">7番&nbsp; <a href="https://db.netkeiba.com/horse/2024105826" target="_blank" style="color:inherit;text-decoration:none">クラリスマインド</a></span></div>
+<div class="horse-sub">牝2歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>6%</b>  (先行危険)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:13%"></div></div>
+</div>
+
+
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div>
+</div>
+<div class="race-block skip">
+<div class="race-header">3歳7 出馬表 | 2026年7月31日 川崎6R 地方競馬レース情報 - netkeiba (1400m ? 12頭)</div>
+<div class="race-skip-bar"><span class="skip-label">🚫 見送り推奨</span><span class="skip-reason">3歳/2歳戦=クラス未確定</span></div>
+<div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">1番&nbsp; <a href="https://db.netkeiba.com/horse/2023101160" target="_blank" style="color:inherit;text-decoration:none">グスク</a></span></div>
+<div class="horse-sub">牡3歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>6%</b>  (3人気(先行割引) / 先行危険)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:13%"></div></div>
+</div>
+
+
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">2番&nbsp; <a href="https://db.netkeiba.com/horse/2023104187" target="_blank" style="color:inherit;text-decoration:none">アンプリフィ</a></span></div>
+<div class="horse-sub">牝3歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>10%</b>  (力負け2.7s(-5))</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:22%"></div></div>
+</div>
+
+
+
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">3番&nbsp; <a href="https://db.netkeiba.com/horse/2023104217" target="_blank" style="color:inherit;text-decoration:none">アスパラノヴァ</a></span></div>
+<div class="horse-sub">牡3歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>9%</b>  (力負け3.7s(-5))</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:20%"></div></div>
+</div>
+
+
+
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">4番&nbsp; <a href="https://db.netkeiba.com/horse/2023104543" target="_blank" style="color:inherit;text-decoration:none">ユノアール</a></span></div>
+<div class="horse-sub">牝3歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>14%</b>  (力負け3.7s(-5) 上がり最下位12%(-6) / 6人気)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-mid" style="width:31%"></div></div>
+</div>
+
+
+
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">5番&nbsp; <a href="https://db.netkeiba.com/horse/2023104542" target="_blank" style="color:inherit;text-decoration:none">バックトラック</a></span></div>
+<div class="horse-sub">セ3歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>8%</b>  (力負け1.8s(-5) 上がり下位37%(-3))</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:17%"></div></div>
+</div>
+
+
+
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">6番&nbsp; <a href="https://db.netkeiba.com/horse/2023101494" target="_blank" style="color:inherit;text-decoration:none">マッドチェイサー</a></span></div>
+<div class="horse-sub">牡3歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>12%</b>  (力負け3.4s(-5) 上がり最下位1%(-6))</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-mid" style="width:26%"></div></div>
+</div>
+
+
+
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">7番&nbsp; <a href="https://db.netkeiba.com/horse/2023100519" target="_blank" style="color:inherit;text-decoration:none">シュールア</a></span></div>
+<div class="horse-sub">牡3歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>14%</b>  (力負け2.4s(-5) 上がり最下位19%(-6))</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-mid" style="width:31%"></div></div>
+</div>
+
+
+
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">8番&nbsp; <a href="https://db.netkeiba.com/horse/2023102722" target="_blank" style="color:inherit;text-decoration:none">チョコラテ</a></span></div>
+<div class="horse-sub">牡3歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>6%</b>  (2人気(先行割引) / 先行危険)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:13%"></div></div>
+</div>
+
+
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row niban">
+<div class="horse-head"><span class="imp imp-niban">○</span><span class="horse-name" style="margin:0">9番&nbsp; <a href="https://db.netkeiba.com/horse/2023101617" target="_blank" style="color:inherit;text-decoration:none">リコータイフォン</a></span></div>
+<div class="horse-sub">セ3歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>25%</b>  (1人気(やや本命))</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-high" style="width:55%"></div></div>
+</div>
+
+
+
+</div><div class="horse-row hon">
+<div class="horse-head"><span class="imp imp-hon">◎</span><span class="horse-name" style="margin:0">10番&nbsp; <a href="https://db.netkeiba.com/horse/2023101839" target="_blank" style="color:inherit;text-decoration:none">ララヴィテス</a></span></div>
+<div class="horse-sub">牡3歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>40%</b>  (上がり上位31%(+6) 複勝50% 平均4.0着 / 4人気 / 先行危険)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-high" style="width:88%"></div></div>
+</div>
+
+
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row san">
+<div class="horse-head"><span class="imp imp-san">△</span><span class="horse-name" style="margin:0">11番&nbsp; <a href="https://db.netkeiba.com/horse/2023102601" target="_blank" style="color:inherit;text-decoration:none">サラサチャーミング</a></span></div>
+<div class="horse-sub">牝3歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>8%</b>  (5人気)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:17%"></div></div>
+</div>
+
+
+
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">12番&nbsp; <a href="https://db.netkeiba.com/horse/2023102705" target="_blank" style="color:inherit;text-decoration:none">レイナデルアレーナ</a></span></div>
+<div class="horse-sub">牝3歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>14%</b>  (力負け2.7s(-5) 上がり下位34%(-3))</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-mid" style="width:31%"></div></div>
+</div>
+
+
+
+</div>
+</div>
+<div class="race-block">
+<div class="race-header">オーブ賞 出馬表 | 2026年7月31日 川崎7R 地方競馬レース情報 - netkeiba (1500m ? 11頭)</div>
+<div class="race-kuzure-bar kuzure-bar-mid">⚖️ 中間予想 (先行4人) — 本命+穴 両にらみ</div><div style="padding:6px 12px;font-size:12px;background:#fffde7;border-bottom:1px solid #ffe082;color:#5d4037">【印】◎ 11番オリコウビアリッツ　○ 1番エターナルフィズ　△ 5番パンツオンリー 7番ナイスキック&nbsp;&nbsp;<span style="color:#888">(崩れ度:4人  ⚡ハイペース警戒)</span></div>
+<div class="horse-row niban">
+<div class="horse-head"><span class="imp imp-niban">○</span><span class="horse-name" style="margin:0">1番&nbsp; <a href="https://db.netkeiba.com/horse/2023101612" target="_blank" style="color:inherit;text-decoration:none">エターナルフィズ</a></span></div>
+<div class="horse-sub">牝3歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>25%</b>  (惜敗0.3s(+18) 上がり上位10%(+10) 複勝30% / 5人気 / イン差し)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-high" style="width:55%"></div></div>
+</div>
+
+
+<div class="badges"><span class="badge badge-in">イン差し(60%)</span></div>
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">2番&nbsp; <a href="https://db.netkeiba.com/horse/2023100147" target="_blank" style="color:inherit;text-decoration:none">ドナエポナ</a></span></div>
+<div class="horse-sub">牝3歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>17%</b>  (力負け2.6s(-5) 上がり下位26%(-3) 複勝20%)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-mid" style="width:37%"></div></div>
+</div>
+
+
+
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">3番&nbsp; <a href="https://db.netkeiba.com/horse/2023105192" target="_blank" style="color:inherit;text-decoration:none">オリコウドゥビル</a></span></div>
+<div class="horse-sub">牡3歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>8%</b>  (4人気)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:17%"></div></div>
+</div>
+
+
+
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">4番&nbsp; <a href="https://db.netkeiba.com/horse/2023105710" target="_blank" style="color:inherit;text-decoration:none">ガラデラパンテラ</a></span></div>
+<div class="horse-sub">牡3歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>15%</b>  (力負け2.3s(-5) 上がり上位34%(+6) 複勝20% / 先行危険)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-mid" style="width:33%"></div></div>
+</div>
+
+
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row san">
+<div class="horse-head"><span class="imp imp-san">△</span><span class="horse-name" style="margin:0">5番&nbsp; <a href="https://db.netkeiba.com/horse/2023103945" target="_blank" style="color:inherit;text-decoration:none">パンツオンリー</a></span></div>
+<div class="horse-sub">牝3歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>21%</b>  (力負け3.5s(-5) 上がり最下位9%(-6) 複勝25% / 5割復帰)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-high" style="width:46%"></div></div>
+</div>
+
+
+<div class="badges"><span class="badge badge-bio">★5割復帰</span></div>
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">6番&nbsp; <a href="https://db.netkeiba.com/horse/2023105219" target="_blank" style="color:inherit;text-decoration:none">クイーンズステート</a></span></div>
+<div class="horse-sub">牝3歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>36%</b>  (力負け2.6s(-5) 複勝42% 平均4.4着)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-high" style="width:80%"></div></div>
+</div>
+
+
+
+</div><div class="horse-row san">
+<div class="horse-head"><span class="imp imp-san">△</span><span class="horse-name" style="margin:0">7番&nbsp; <a href="https://db.netkeiba.com/horse/2023107416" target="_blank" style="color:inherit;text-decoration:none">ナイスキック</a></span></div>
+<div class="horse-sub">牝3歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>83%</b>  (接戦0.4s(+9) 上がり上位23%(+6) 複勝100% 平均2.0着 / 1人気(先行割引) / 先行危険)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-high" style="width:100%"></div></div>
+</div>
+
+
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">8番&nbsp; <a href="https://db.netkeiba.com/horse/2023101763" target="_blank" style="color:inherit;text-decoration:none">コウジンヴンダー</a></span></div>
+<div class="horse-sub">牝3歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>6%</b>  (2人気(先行割引) / 先行危険)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:13%"></div></div>
+</div>
+
+
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">9番&nbsp; <a href="https://db.netkeiba.com/horse/2023104102" target="_blank" style="color:inherit;text-decoration:none">テセラグラディウス</a></span></div>
+<div class="horse-sub">牝3歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>6%</b>  (3人気(先行割引) / 先行危険)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:13%"></div></div>
+</div>
+
+
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">10番&nbsp; <a href="https://db.netkeiba.com/horse/2023102861" target="_blank" style="color:inherit;text-decoration:none">シェナマーブル</a></span></div>
+<div class="horse-sub">牡3歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>36%</b>  (力負け2.5s(-5) 複勝42% 平均4.3着)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-high" style="width:80%"></div></div>
+</div>
+
+
+
+</div><div class="horse-row hon">
+<div class="horse-head"><span class="imp imp-hon">◎</span><span class="horse-name" style="margin:0">11番&nbsp; <a href="https://db.netkeiba.com/horse/2023104889" target="_blank" style="color:inherit;text-decoration:none">オリコウビアリッツ</a></span></div>
+<div class="horse-sub">牡3歳  格:?</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>42%</b>  (前走1着(同級+25) 上がり上位12%(+10) 複勝50% 平均3.8着 / 6人気)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-high" style="width:93%"></div></div>
+</div>
+
+
+
+</div>
+</div>
+<div class="race-block daini">
+<div class="race-header">クロート賞 出馬表 | 2026年7月31日 川崎8R 地方競馬レース情報 - netkeiba (2000m C2 10頭)</div>
+<div class="race-emphasis-bar daini">★第二  川崎2000m C2</div><div class="race-kuzure-bar kuzure-bar-mid">⚖️ 中間予想 (先行4人) — 本命+穴 両にらみ</div><div style="padding:6px 12px;font-size:12px;background:#fffde7;border-bottom:1px solid #ffe082;color:#5d4037">【印】◎ 2番シントーハナノラン　○ 1番モナークスラッガー　△ 3番タヴァネスタン 9番リンテンリュウ&nbsp;&nbsp;<span style="color:#888">(崩れ度:4人  ⚡ハイペース警戒)</span></div><div class="race-pt-row">付与ポイント: 1着+180pt / 2着+72pt / 3着+45pt / 4着+27pt / 5着+18pt</div>
+<div class="horse-row niban">
+<div class="horse-head"><span class="imp imp-niban">○</span><span class="horse-name" style="margin:0">1番&nbsp; <a href="https://db.netkeiba.com/horse/2020104252" target="_blank" style="color:inherit;text-decoration:none">モナークスラッガー</a></span></div>
+<div class="horse-sub">牡6歳  格:C2</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>14%</b>  (差0.7s(+4) 上がり上位29%(+6) / 5人気 / イン差し)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-mid" style="width:31%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C2 820pt → C1ライン:1100pt
+     (あと280pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:74%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+180</span><span class="pt-rank-item">2着+72</span><span class="pt-rank-item">3着+45</span><span class="pt-rank-item">4着+27</span><span class="pt-rank-item">5着+18</span></div>
+<div class="badges"><span class="badge badge-in">イン差し(50%)</span></div>
+</div><div class="horse-row hon">
+<div class="horse-head"><span class="imp imp-hon">◎</span><span class="horse-name" style="margin:0">2番&nbsp; <a href="https://db.netkeiba.com/horse/2019106166" target="_blank" style="color:inherit;text-decoration:none">シントーハナノラン</a></span></div>
+<div class="horse-sub">牝7歳  格:C2</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>40%</b>  (差0.7s(+4) 上がり上位29%(+6) 複勝50% 平均3.9着 / 2人気(先行割引) / イン差し / 先行危険)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-high" style="width:88%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C2 1170pt → C1ライン:1400pt
+     (あと230pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:83%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+180</span><span class="pt-rank-item">2着+72</span><span class="pt-rank-item">3着+45</span><span class="pt-rank-item">4着+27</span><span class="pt-rank-item">5着+18</span></div>
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span><span class="badge badge-in">イン差し(90%)</span></div>
+</div><div class="horse-row san">
+<div class="horse-head"><span class="imp imp-san">△</span><span class="horse-name" style="margin:0">3番&nbsp; <a href="https://db.netkeiba.com/horse/2022110074" target="_blank" style="color:inherit;text-decoration:none">タヴァネスタン</a></span></div>
+<div class="horse-sub">牡4歳  格:C2</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>34%</b>  (接戦0.5s(+9) 上がり上位15%(+10) 複勝42% 平均4.4着 / 1人気(先行割引) / 先行危険)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-high" style="width:75%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C2 365pt → C1ライン:600pt
+     (あと235pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:60%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+180</span><span class="pt-rank-item">2着+72</span><span class="pt-rank-item">3着+45</span><span class="pt-rank-item">4着+27</span><span class="pt-rank-item">5着+18</span></div>
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">4番&nbsp; <a href="https://db.netkeiba.com/horse/2022106810" target="_blank" style="color:inherit;text-decoration:none">カンナギ</a></span></div>
+<div class="horse-sub">牝4歳  格:C3</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>8%</b>  (力負け2.9s(-5) 上がり最下位15%(-6))</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:17%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C3 269pt → C2ライン:300pt
+     (あと31pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:89%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+180→昇級!</span><span class="pt-rank-item breakthrough">2着+72→昇級!</span><span class="pt-rank-item breakthrough">3着+45→昇級!</span><span class="pt-rank-item">4着+27</span><span class="pt-rank-item">5着+18</span></div>
+<div class="badges"><span class="badge badge-reach-warn">⚠リーチ圏(あと31pt)</span></div>
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">5番&nbsp; <a href="https://db.netkeiba.com/horse/2018100713" target="_blank" style="color:inherit;text-decoration:none">ワンラヴ</a></span></div>
+<div class="horse-sub">牝8歳  格:C2</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>12%</b>  (力負け1.7s(-5) / イン差し / 先行危険)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-mid" style="width:26%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C2 1234pt → C1ライン:1500pt
+     (あと266pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:82%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+180</span><span class="pt-rank-item">2着+72</span><span class="pt-rank-item">3着+45</span><span class="pt-rank-item">4着+27</span><span class="pt-rank-item">5着+18</span></div>
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span><span class="badge badge-in">イン差し(73%)</span></div>
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">6番&nbsp; <a href="https://db.netkeiba.com/horse/2022103903" target="_blank" style="color:inherit;text-decoration:none">オトコユメラク</a></span></div>
+<div class="horse-sub">牡4歳  格:C2</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>8%</b>  (力負け1.7s(-5) 上がり下位29%(-3))</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:17%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C2 306pt → C1ライン:600pt
+     (あと294pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:51%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+180</span><span class="pt-rank-item">2着+72</span><span class="pt-rank-item">3着+45</span><span class="pt-rank-item">4着+27</span><span class="pt-rank-item">5着+18</span></div>
+
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">7番&nbsp; <a href="https://db.netkeiba.com/horse/2022104025" target="_blank" style="color:inherit;text-decoration:none">ベルバルト</a></span></div>
+<div class="horse-sub">牡4歳  格:C2</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>8%</b>  (差1.0s(+4) / 6人気)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:17%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C2 310pt → C1ライン:600pt
+     (あと290pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:51%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+180</span><span class="pt-rank-item">2着+72</span><span class="pt-rank-item">3着+45</span><span class="pt-rank-item">4着+27</span><span class="pt-rank-item">5着+18</span></div>
+
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">8番&nbsp; <a href="https://db.netkeiba.com/horse/2022101150" target="_blank" style="color:inherit;text-decoration:none">ヴァッツマン</a></span></div>
+<div class="horse-sub">牡4歳  格:C2</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>6%</b>  (上がり上位10%(+10) / 4人気 / 先行危険)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:13%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C2 436pt → C1ライン:600pt
+     (あと164pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:72%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+180→昇級!</span><span class="pt-rank-item">2着+72</span><span class="pt-rank-item">3着+45</span><span class="pt-rank-item">4着+27</span><span class="pt-rank-item">5着+18</span></div>
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row san">
+<div class="horse-head"><span class="imp imp-san">△</span><span class="horse-name" style="margin:0">9番&nbsp; <a href="https://db.netkeiba.com/horse/2022102643" target="_blank" style="color:inherit;text-decoration:none">リンテンリュウ</a></span></div>
+<div class="horse-sub">牝4歳  格:C2</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>25%</b>  (差0.7s(+4) 上がり上位26%(+6) 複勝30% / 3人気(やや本命))</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-high" style="width:55%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C2 303pt → C1ライン:600pt
+     (あと297pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:50%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+180</span><span class="pt-rank-item">2着+72</span><span class="pt-rank-item">3着+45</span><span class="pt-rank-item">4着+27</span><span class="pt-rank-item">5着+18</span></div>
+
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">10番&nbsp; <a href="https://db.netkeiba.com/horse/2022101472" target="_blank" style="color:inherit;text-decoration:none">メイショウサノサ</a></span></div>
+<div class="horse-sub">牝4歳  格:C2</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>8%</b>  (力負け4.9s(-5) 上がり最下位1%(-6))</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:17%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C2 434pt → C1ライン:600pt
+     (あと166pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:72%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+180→昇級!</span><span class="pt-rank-item">2着+72</span><span class="pt-rank-item">3着+45</span><span class="pt-rank-item">4着+27</span><span class="pt-rank-item">5着+18</span></div>
+
+</div>
+</div>
+<div class="race-block skip">
+<div class="race-header">紫電賞 出馬表 | 2026年7月31日 川崎9R 地方競馬レース情報 - netkeiba (900m C2 12頭)</div>
+<div class="race-skip-bar"><span class="skip-label">🚫 見送り推奨</span><span class="skip-reason">900m=短距離</span></div><div class="race-pt-row">付与ポイント: 1着+180pt / 2着+72pt / 3着+45pt / 4着+27pt / 5着+18pt</div>
+<div class="horse-row niban">
+<div class="horse-head"><span class="imp imp-niban">○</span><span class="horse-name" style="margin:0">1番&nbsp; <a href="https://db.netkeiba.com/horse/2020110117" target="_blank" style="color:inherit;text-decoration:none">ララロワデザニモー</a></span></div>
+<div class="horse-sub">牡6歳  格:C2</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>74%</b>  (前走1着(昇級+20) 上がり上位28%(+6) 複勝90% 平均1.6着 / 1人気(先行割引) / イン差し / 先行危険)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-high" style="width:100%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C2 1042pt → C1ライン:1100pt
+     (あと58pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:94%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+180→昇級!</span><span class="pt-rank-item breakthrough">2着+72→昇級!</span><span class="pt-rank-item">3着+45</span><span class="pt-rank-item">4着+27</span><span class="pt-rank-item">5着+18</span></div>
+<div class="badges"><span class="badge badge-reach-warn">⚠リーチ圏(あと58pt)</span><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span><span class="badge badge-in">イン差し(92%)</span></div>
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">2番&nbsp; <a href="https://db.netkeiba.com/horse/2020100356" target="_blank" style="color:inherit;text-decoration:none">リラスカイ</a></span></div>
+<div class="horse-sub">牝6歳  格:C2</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>25%</b>  (力負け2.0s(-5) 上がり下位31%(-3) 複勝30% / イン差し)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-high" style="width:55%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C2 856pt → C1ライン:1100pt
+     (あと244pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:77%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+180</span><span class="pt-rank-item">2着+72</span><span class="pt-rank-item">3着+45</span><span class="pt-rank-item">4着+27</span><span class="pt-rank-item">5着+18</span></div>
+<div class="badges"><span class="badge badge-in">イン差し(50%)</span></div>
+</div><div class="horse-row hon">
+<div class="horse-head"><span class="imp imp-hon">◎</span><span class="horse-name" style="margin:0">3番&nbsp; <a href="https://db.netkeiba.com/horse/2019103310" target="_blank" style="color:inherit;text-decoration:none">モンテジュエル</a></span></div>
+<div class="horse-sub">牝7歳  格:C2</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>51%</b>  (差0.6s(+4) 上がり上位17%(+10) 複勝60% 平均3.9着 / 4人気 / イン差し / 5割復帰)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-high" style="width:100%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C2 1103pt → C1ライン:1400pt
+     (あと297pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:78%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+180</span><span class="pt-rank-item">2着+72</span><span class="pt-rank-item">3着+45</span><span class="pt-rank-item">4着+27</span><span class="pt-rank-item">5着+18</span></div>
+<div class="badges"><span class="badge badge-in">イン差し(65%)</span><span class="badge badge-bio">★5割復帰</span></div>
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">4番&nbsp; <a href="https://db.netkeiba.com/horse/2022102591" target="_blank" style="color:inherit;text-decoration:none">ダッシングマン</a></span></div>
+<div class="horse-sub">牡4歳  格:C2</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>23%</b>  (接戦0.3s(+9) 複勝30% / 3人気(先行割引) / イン差し / 先行危険)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-high" style="width:51%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C2 502pt → C1ライン:600pt
+     (あと98pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:83%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+180→昇級!</span><span class="pt-rank-item">2着+72</span><span class="pt-rank-item">3着+45</span><span class="pt-rank-item">4着+27</span><span class="pt-rank-item">5着+18</span></div>
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span><span class="badge badge-in">イン差し(50%)</span></div>
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">5番&nbsp; <a href="https://db.netkeiba.com/horse/2020100998" target="_blank" style="color:inherit;text-decoration:none">ヴァルトビューネ</a></span></div>
+<div class="horse-sub">牡6歳  格:C2</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>34%</b>  (上がり最下位17%(-6) 複勝40% / イン差し)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-high" style="width:75%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C2 877pt → C1ライン:1100pt
+     (あと223pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:79%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+180</span><span class="pt-rank-item">2着+72</span><span class="pt-rank-item">3着+45</span><span class="pt-rank-item">4着+27</span><span class="pt-rank-item">5着+18</span></div>
+<div class="badges"><span class="badge badge-in">イン差し(62%)</span></div>
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">6番&nbsp; <a href="https://db.netkeiba.com/horse/2022107335" target="_blank" style="color:inherit;text-decoration:none">ラックナシェード</a></span></div>
+<div class="horse-sub">牝4歳  格:C2</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>25%</b>  (力負け1.6s(-5) 複勝30% / イン差し)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-high" style="width:55%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C2 509pt → C1ライン:600pt
+     (あと91pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:84%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+180→昇級!</span><span class="pt-rank-item">2着+72</span><span class="pt-rank-item">3着+45</span><span class="pt-rank-item">4着+27</span><span class="pt-rank-item">5着+18</span></div>
+<div class="badges"><span class="badge badge-in">イン差し(100%)</span></div>
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">7番&nbsp; <a href="https://db.netkeiba.com/horse/2021104290" target="_blank" style="color:inherit;text-decoration:none">ゴーゴーダンサー</a></span></div>
+<div class="horse-sub">牝5歳  格:C2</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>34%</b>  (差0.9s(+4) 上がり下位20%(-3) 複勝40% 平均4.5着 / 5人気)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-high" style="width:75%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C2 610pt → C1ライン:800pt
+     (あと190pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:76%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+180</span><span class="pt-rank-item">2着+72</span><span class="pt-rank-item">3着+45</span><span class="pt-rank-item">4着+27</span><span class="pt-rank-item">5着+18</span></div>
+
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">8番&nbsp; <a href="https://db.netkeiba.com/horse/2020102135" target="_blank" style="color:inherit;text-decoration:none">ペイシャアンジェロ</a></span></div>
+<div class="horse-sub">牝6歳  格:C2</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>8%</b>  (力負け5.1s(-5) 上がり最下位1%(-6))</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:17%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C2 893pt → C1ライン:1100pt
+     (あと207pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:81%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+180</span><span class="pt-rank-item">2着+72</span><span class="pt-rank-item">3着+45</span><span class="pt-rank-item">4着+27</span><span class="pt-rank-item">5着+18</span></div>
+
+</div><div class="horse-row san">
+<div class="horse-head"><span class="imp imp-san">△</span><span class="horse-name" style="margin:0">9番&nbsp; <a href="https://db.netkeiba.com/horse/2022103759" target="_blank" style="color:inherit;text-decoration:none">カネトシフープ</a></span></div>
+<div class="horse-sub">牝4歳  格:C2</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>23%</b>  (差0.6s(+4) 上がり上位21%(+10) 複勝30% 平均4.6着 / 2人気(先行割引) / 5割復帰 / 先行危険)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-high" style="width:51%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C2 594pt → C1ライン:600pt
+     (あと6pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-reach" style="width:99%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+180→昇級!</span><span class="pt-rank-item breakthrough">2着+72→昇級!</span><span class="pt-rank-item breakthrough">3着+45→昇級!</span><span class="pt-rank-item breakthrough">4着+27→昇級!</span><span class="pt-rank-item breakthrough">5着+18→昇級!</span></div>
+<div class="badges"><span class="badge badge-reach-warn">⚠リーチ圏(あと6pt)</span><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span><span class="badge badge-bio">★5割復帰</span></div>
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">10番&nbsp; <a href="https://db.netkeiba.com/horse/2021101074" target="_blank" style="color:inherit;text-decoration:none">ヒューマンライツ</a></span></div>
+<div class="horse-sub">牡5歳  格:C2</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>8%</b>  (上がり下位26%(-3))</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:17%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C2 700pt → C1ライン:800pt
+     (あと100pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:87%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+180→昇級!</span><span class="pt-rank-item">2着+72</span><span class="pt-rank-item">3着+45</span><span class="pt-rank-item">4着+27</span><span class="pt-rank-item">5着+18</span></div>
+
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">11番&nbsp; <a href="https://db.netkeiba.com/horse/2022101506" target="_blank" style="color:inherit;text-decoration:none">メイショウユウモウ</a></span></div>
+<div class="horse-sub">セ4歳  格:C2</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>34%</b>  (差0.7s(+4) 上がり下位34%(-3) 複勝40%)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-high" style="width:75%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C2 339pt → C1ライン:600pt
+     (あと261pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:56%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+180</span><span class="pt-rank-item">2着+72</span><span class="pt-rank-item">3着+45</span><span class="pt-rank-item">4着+27</span><span class="pt-rank-item">5着+18</span></div>
+
+</div><div class="horse-row san">
+<div class="horse-head"><span class="imp imp-san">△</span><span class="horse-name" style="margin:0">12番&nbsp; <a href="https://db.netkeiba.com/horse/2021103107" target="_blank" style="color:inherit;text-decoration:none">ラベンダーマカロン</a></span></div>
+<div class="horse-sub">牝5歳  格:C2</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>47%</b>  (上がり上位28%(+6) 複勝55% 平均4.0着 / 6人気 / イン差し)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-high" style="width:100%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C2 565pt → C1ライン:800pt
+     (あと235pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:70%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+180</span><span class="pt-rank-item">2着+72</span><span class="pt-rank-item">3着+45</span><span class="pt-rank-item">4着+27</span><span class="pt-rank-item">5着+18</span></div>
+<div class="badges"><span class="badge badge-in">イン差し(57%)</span></div>
+</div>
+</div>
+<div class="race-block skip">
+<div class="race-header">迅速賞 出馬表 | 2026年7月31日 川崎10R 地方競馬レース情報 - netkeiba (900m C1 12頭)</div>
+<div class="race-skip-bar"><span class="skip-label">🚫 見送り推奨</span><span class="skip-reason">900m=短距離</span></div><div class="race-pt-row">付与ポイント: 1着+200pt / 2着+80pt / 3着+50pt / 4着+30pt / 5着+20pt</div>
+<div class="horse-row niban">
+<div class="horse-head"><span class="imp imp-niban">○</span><span class="horse-name" style="margin:0">1番&nbsp; <a href="https://db.netkeiba.com/horse/2022101395" target="_blank" style="color:inherit;text-decoration:none">クリノウィリアム</a></span></div>
+<div class="horse-sub">牡4歳  格:C1</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>59%</b>  (惜敗0.3s(+18) 上がり上位9%(+10) 複勝70% 平均3.8着 / 2人気(やや本命) / イン差し)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-high" style="width:100%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 897pt → B3ライン:900pt
+     (あと3pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-reach" style="width:99%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+200→昇級!</span><span class="pt-rank-item breakthrough">2着+80→昇級!</span><span class="pt-rank-item breakthrough">3着+50→昇級!</span><span class="pt-rank-item breakthrough">4着+30→昇級!</span><span class="pt-rank-item breakthrough">5着+20→昇級!</span></div>
+<div class="badges"><span class="badge badge-reach-warn">⚠リーチ圏(あと3pt)</span><span class="badge badge-in">イン差し(86%)</span></div>
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">2番&nbsp; <a href="https://db.netkeiba.com/horse/2021102681" target="_blank" style="color:inherit;text-decoration:none">イソエヴィクラント</a></span></div>
+<div class="horse-sub">牡5歳  格:C1</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>14%</b>  (上がり下位23%(-3) / イン差し)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-mid" style="width:31%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 996pt → B3ライン:1100pt
+     (あと104pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:90%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+200→昇級!</span><span class="pt-rank-item">2着+80</span><span class="pt-rank-item">3着+50</span><span class="pt-rank-item">4着+30</span><span class="pt-rank-item">5着+20</span></div>
+<div class="badges"><span class="badge badge-in">イン差し(80%)</span></div>
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">3番&nbsp; <a href="https://db.netkeiba.com/horse/2022106235" target="_blank" style="color:inherit;text-decoration:none">ウインレアリゼ</a></span></div>
+<div class="horse-sub">牝4歳  格:C1</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>8%</b>  (4人気)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:17%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 869pt → B3ライン:900pt
+     (あと31pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-reach" style="width:96%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+200→昇級!</span><span class="pt-rank-item breakthrough">2着+80→昇級!</span><span class="pt-rank-item breakthrough">3着+50→昇級!</span><span class="pt-rank-item">4着+30</span><span class="pt-rank-item">5着+20</span></div>
+<div class="badges"><span class="badge badge-reach-warn">⚠リーチ圏(あと31pt)</span></div>
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">4番&nbsp; <a href="https://db.netkeiba.com/horse/2022106025" target="_blank" style="color:inherit;text-decoration:none">ネヴァーノウズ</a></span></div>
+<div class="horse-sub">牡4歳  格:C1</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>14%</b>  (力負け2.4s(-5) 上がり最下位10%(-6) / イン差し)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-mid" style="width:31%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 605pt → B3ライン:900pt
+     (あと295pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:67%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+200</span><span class="pt-rank-item">2着+80</span><span class="pt-rank-item">3着+50</span><span class="pt-rank-item">4着+30</span><span class="pt-rank-item">5着+20</span></div>
+<div class="badges"><span class="badge badge-in">イン差し(60%)</span></div>
+</div><div class="horse-row hon">
+<div class="horse-head"><span class="imp imp-hon">◎</span><span class="horse-name" style="margin:0">5番&nbsp; <a href="https://db.netkeiba.com/horse/2021102906" target="_blank" style="color:inherit;text-decoration:none">リュウノシンクウハ</a></span></div>
+<div class="horse-sub">牡5歳  格:C1</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>42%</b>  (前走1着(同級+25) 上がり上位41%(+6) 複勝50% 平均3.5着 / 3人気(やや本命) / イン差し / 5割復帰)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-high" style="width:93%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 858pt → B3ライン:1100pt
+     (あと242pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:78%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+200</span><span class="pt-rank-item">2着+80</span><span class="pt-rank-item">3着+50</span><span class="pt-rank-item">4着+30</span><span class="pt-rank-item">5着+20</span></div>
+<div class="badges"><span class="badge badge-in">イン差し(71%)</span><span class="badge badge-bio">★5割復帰</span></div>
+</div><div class="horse-row san">
+<div class="horse-head"><span class="imp imp-san">△</span><span class="horse-name" style="margin:0">6番&nbsp; <a href="https://db.netkeiba.com/horse/2021107381" target="_blank" style="color:inherit;text-decoration:none">アタゴテンジン</a></span></div>
+<div class="horse-sub">セ5歳  格:C1</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>74%</b>  (惜敗0.3s(+18) 上がり下位31%(-3) 複勝90% 平均2.6着 / 1人気(先行割引) / イン差し / 5割復帰 / 先行危険)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-high" style="width:100%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 934pt → B3ライン:1100pt
+     (あと166pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:84%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+200→昇級!</span><span class="pt-rank-item">2着+80</span><span class="pt-rank-item">3着+50</span><span class="pt-rank-item">4着+30</span><span class="pt-rank-item">5着+20</span></div>
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span><span class="badge badge-in">イン差し(90%)</span><span class="badge badge-bio">★5割復帰</span></div>
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">7番&nbsp; <a href="https://db.netkeiba.com/horse/2021100511" target="_blank" style="color:inherit;text-decoration:none">パワポケウイング</a></span></div>
+<div class="horse-sub">牡5歳  格:C1</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>17%</b>  (上がり上位17%(+10) 複勝20%)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-mid" style="width:37%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 911pt → B3ライン:1100pt
+     (あと189pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:82%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+200→昇級!</span><span class="pt-rank-item">2着+80</span><span class="pt-rank-item">3着+50</span><span class="pt-rank-item">4着+30</span><span class="pt-rank-item">5着+20</span></div>
+
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">8番&nbsp; <a href="https://db.netkeiba.com/horse/2022109068" target="_blank" style="color:inherit;text-decoration:none">クレバス</a></span></div>
+<div class="horse-sub">牝4歳  格:C1</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>23%</b>  (惜敗0.3s(+18) 複勝30% 平均4.6着 / 5割復帰 / 先行危険)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-high" style="width:51%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 789pt → B3ライン:900pt
+     (あと111pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:87%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+200→昇級!</span><span class="pt-rank-item">2着+80</span><span class="pt-rank-item">3着+50</span><span class="pt-rank-item">4着+30</span><span class="pt-rank-item">5着+20</span></div>
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span><span class="badge badge-bio">★5割復帰</span></div>
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">9番&nbsp; <a href="https://db.netkeiba.com/horse/2022103898" target="_blank" style="color:inherit;text-decoration:none">ピーチマカロン</a></span></div>
+<div class="horse-sub">牝4歳  格:C1</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>8%</b>  (惜敗0.3s(+18) 上がり上位21%(+10) / 6人気)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:17%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 643pt → B3ライン:900pt
+     (あと257pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:71%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+200</span><span class="pt-rank-item">2着+80</span><span class="pt-rank-item">3着+50</span><span class="pt-rank-item">4着+30</span><span class="pt-rank-item">5着+20</span></div>
+
+</div><div class="horse-row san">
+<div class="horse-head"><span class="imp imp-san">△</span><span class="horse-name" style="margin:0">10番&nbsp; <a href="https://db.netkeiba.com/horse/2019102707" target="_blank" style="color:inherit;text-decoration:none">プレストヴィーナス</a></span></div>
+<div class="horse-sub">牝7歳  格:C1</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>57%</b>  (差0.7s(+4) 複勝70% 平均2.8着 / 5人気 / イン差し / 5割復帰 / 先行危険)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-high" style="width:100%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 1424pt → B3ライン:1700pt
+     (あと276pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:83%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+200</span><span class="pt-rank-item">2着+80</span><span class="pt-rank-item">3着+50</span><span class="pt-rank-item">4着+30</span><span class="pt-rank-item">5着+20</span></div>
+<div class="badges"><span class="badge badge-yaradzu">ヤラズ危険×2回(67%)</span><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span><span class="badge badge-in">イン差し(50%)</span><span class="badge badge-bio">★5割復帰</span></div>
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">11番&nbsp; <a href="https://db.netkeiba.com/horse/2020103424" target="_blank" style="color:inherit;text-decoration:none">ジュンフカリ</a></span></div>
+<div class="horse-sub">牡6歳  格:C1</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>14%</b>  (力負け1.7s(-5) 上がり上位41%(+6) / イン差し)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-mid" style="width:31%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 1137pt → B3ライン:1400pt
+     (あと263pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:81%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+200</span><span class="pt-rank-item">2着+80</span><span class="pt-rank-item">3着+50</span><span class="pt-rank-item">4着+30</span><span class="pt-rank-item">5着+20</span></div>
+<div class="badges"><span class="badge badge-in">イン差し(88%)</span></div>
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">12番&nbsp; <a href="https://db.netkeiba.com/horse/2021104530" target="_blank" style="color:inherit;text-decoration:none">ビタリス</a></span></div>
+<div class="horse-sub">牝5歳  格:C1</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>17%</b>  (惜敗0.2s(+18) 上がり下位36%(-3) 複勝20% / 5割復帰)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-mid" style="width:37%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 817pt → B3ライン:1100pt
+     (あと283pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:74%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+200</span><span class="pt-rank-item">2着+80</span><span class="pt-rank-item">3着+50</span><span class="pt-rank-item">4着+30</span><span class="pt-rank-item">5着+20</span></div>
+<div class="badges"><span class="badge badge-bio">★5割復帰</span></div>
+</div>
+</div>
+<div class="race-block">
+<div class="race-header">かなテクカレッジ記念 出馬表 | 2026年7月31日 川崎11R 地方競馬レース情報 - netkeiba (1500m B1 12頭)</div>
+<div class="race-kuzure-bar kuzure-bar-mid">⚖️ 中間予想 (先行4人) — 本命+穴 両にらみ</div><div style="padding:6px 12px;font-size:12px;background:#fffde7;border-bottom:1px solid #ffe082;color:#5d4037">【印】◎ 5番ライヴマスタード　○ 6番レグノ　△ 8番ソルベット 12番ビップソリオ&nbsp;&nbsp;<span style="color:#888">(崩れ度:4人  ⚡ハイペース警戒)</span></div><div class="race-pt-row">付与ポイント: 1着+320pt / 2着+128pt / 3着+80pt / 4着+48pt / 5着+32pt</div>
+<div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">1番&nbsp; <a href="https://db.netkeiba.com/horse/2019104316" target="_blank" style="color:inherit;text-decoration:none">サヨノフィールド</a></span></div>
+<div class="horse-sub">牡7歳  格:B1</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>6%</b>  (差0.7s(+4) 上がり上位13%(+10) / 先行危険)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:13%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">B1 3205pt → A2ライン:3900pt
+     (あと695pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:82%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+320</span><span class="pt-rank-item">2着+128</span><span class="pt-rank-item">3着+80</span><span class="pt-rank-item">4着+48</span><span class="pt-rank-item">5着+32</span></div>
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">2番&nbsp; <a href="https://db.netkeiba.com/horse/2019105136" target="_blank" style="color:inherit;text-decoration:none">モンタナアゲート</a></span></div>
+<div class="horse-sub">牡7歳  格:B1</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>8%</b></span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:17%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">B1 3131pt → A2ライン:3900pt
+     (あと769pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:80%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+320</span><span class="pt-rank-item">2着+128</span><span class="pt-rank-item">3着+80</span><span class="pt-rank-item">4着+48</span><span class="pt-rank-item">5着+32</span></div>
+
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">3番&nbsp; <a href="https://db.netkeiba.com/horse/2020105361" target="_blank" style="color:inherit;text-decoration:none">エリンアキレウス</a></span></div>
+<div class="horse-sub">牡6歳  格:B1</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>25%</b>  (差1.0s(+4) 上がり上位37%(+6) 複勝30% 平均5.0着)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-high" style="width:55%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">B1 2754pt → A2ライン:3400pt
+     (あと646pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:81%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+320</span><span class="pt-rank-item">2着+128</span><span class="pt-rank-item">3着+80</span><span class="pt-rank-item">4着+48</span><span class="pt-rank-item">5着+32</span></div>
+
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">4番&nbsp; <a href="https://db.netkeiba.com/horse/2022106088" target="_blank" style="color:inherit;text-decoration:none">スターグリップ</a></span></div>
+<div class="horse-sub">牡4歳  格:B1</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>57%</b>  (接戦0.6s(+9) 複勝70% 平均2.9着 / 2人気(先行割引) / イン差し / 5割復帰 / 先行危険)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-high" style="width:100%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">B1 2122pt → A2ライン:2300pt
+     (あと178pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:92%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+320→昇級!</span><span class="pt-rank-item">2着+128</span><span class="pt-rank-item">3着+80</span><span class="pt-rank-item">4着+48</span><span class="pt-rank-item">5着+32</span></div>
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span><span class="badge badge-in">イン差し(91%)</span><span class="badge badge-bio">★5割復帰</span></div>
+</div><div class="horse-row hon">
+<div class="horse-head"><span class="imp imp-hon">◎</span><span class="horse-name" style="margin:0">5番&nbsp; <a href="https://db.netkeiba.com/horse/2020104384" target="_blank" style="color:inherit;text-decoration:none">ライヴマスタード</a></span></div>
+<div class="horse-sub">牡6歳  格:B2</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>76%</b>  (惜敗0.3s(+18) 上がり上位12%(+10) 複勝90% 平均2.0着 / 4人気 / イン差し / 5割復帰)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-high" style="width:100%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">B2 2298pt → B1ライン:2500pt
+     (あと202pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:91%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+320→昇級!</span><span class="pt-rank-item">2着+128</span><span class="pt-rank-item">3着+80</span><span class="pt-rank-item">4着+48</span><span class="pt-rank-item">5着+32</span></div>
+<div class="badges"><span class="badge badge-in">イン差し(100%)</span><span class="badge badge-bio">★5割復帰</span></div>
+</div><div class="horse-row niban">
+<div class="horse-head"><span class="imp imp-niban">○</span><span class="horse-name" style="margin:0">6番&nbsp; <a href="https://db.netkeiba.com/horse/2021100456" target="_blank" style="color:inherit;text-decoration:none">レグノ</a></span></div>
+<div class="horse-sub">牡5歳  格:B2</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>32%</b>  (前走1着(同級+25) 上がり上位12%(+10) 複勝40% 平均4.8着 / 6人気 / イン差し / 5割復帰 / 先行危険)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-high" style="width:71%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">B2 1989pt → B1ライン:2000pt
+     (あと11pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-reach" style="width:99%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+320→昇級!</span><span class="pt-rank-item breakthrough">2着+128→昇級!</span><span class="pt-rank-item breakthrough">3着+80→昇級!</span><span class="pt-rank-item breakthrough">4着+48→昇級!</span><span class="pt-rank-item breakthrough">5着+32→昇級!</span></div>
+<div class="badges"><span class="badge badge-reach-warn">⚠リーチ圏(あと11pt)</span><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span><span class="badge badge-in">イン差し(78%)</span><span class="badge badge-bio">★5割復帰</span></div>
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">7番&nbsp; <a href="https://db.netkeiba.com/horse/2020100198" target="_blank" style="color:inherit;text-decoration:none">シャンパンファイト</a></span></div>
+<div class="horse-sub">牡6歳  格:B1</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>14%</b>  (上がり下位38%(-3) / 5人気 / イン差し)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-mid" style="width:31%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">B1 2571pt → A2ライン:3400pt
+     (あと829pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:75%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+320</span><span class="pt-rank-item">2着+128</span><span class="pt-rank-item">3着+80</span><span class="pt-rank-item">4着+48</span><span class="pt-rank-item">5着+32</span></div>
+<div class="badges"><span class="badge badge-in">イン差し(53%)</span></div>
+</div><div class="horse-row san">
+<div class="horse-head"><span class="imp imp-san">△</span><span class="horse-name" style="margin:0">8番&nbsp; <a href="https://db.netkeiba.com/horse/2021103813" target="_blank" style="color:inherit;text-decoration:none">ソルベット</a></span></div>
+<div class="horse-sub">牝5歳  格:B2</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>68%</b>  (接戦0.4s(+9) 上がり下位34%(-3) 複勝80% 平均2.6着 / 3人気(やや本命) / イン差し / 5割復帰)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-high" style="width:100%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">B2 1546pt → B1ライン:2000pt
+     (あと454pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:77%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+320</span><span class="pt-rank-item">2着+128</span><span class="pt-rank-item">3着+80</span><span class="pt-rank-item">4着+48</span><span class="pt-rank-item">5着+32</span></div>
+<div class="badges"><span class="badge badge-in">イン差し(91%)</span><span class="badge badge-bio">★5割復帰</span></div>
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">9番&nbsp; <a href="https://db.netkeiba.com/horse/2020104864" target="_blank" style="color:inherit;text-decoration:none">タマモヴェナトル</a></span></div>
+<div class="horse-sub">牡6歳  格:B1</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>8%</b></span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:17%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">B1 2506pt → A2ライン:3400pt
+     (あと894pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:73%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+320</span><span class="pt-rank-item">2着+128</span><span class="pt-rank-item">3着+80</span><span class="pt-rank-item">4着+48</span><span class="pt-rank-item">5着+32</span></div>
+
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">10番&nbsp; <a href="https://db.netkeiba.com/horse/2019106734" target="_blank" style="color:inherit;text-decoration:none">クアトロフォンテ</a></span></div>
+<div class="horse-sub">牡7歳  格:B1</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>17%</b>  (差0.6s(+4) 上がり上位28%(+6) 複勝20% / イン差し / 5割復帰)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-mid" style="width:37%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">B1 3006pt → A2ライン:3900pt
+     (あと894pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:77%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+320</span><span class="pt-rank-item">2着+128</span><span class="pt-rank-item">3着+80</span><span class="pt-rank-item">4着+48</span><span class="pt-rank-item">5着+32</span></div>
+<div class="badges"><span class="badge badge-in">イン差し(71%)</span><span class="badge badge-bio">★5割復帰</span></div>
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">11番&nbsp; <a href="https://db.netkeiba.com/horse/2021106784" target="_blank" style="color:inherit;text-decoration:none">バウンスライト</a></span></div>
+<div class="horse-sub">牡5歳  格:B1</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>68%</b>  (力負け1.8s(-5) 複勝80% 平均3.0着 / 5割復帰)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-high" style="width:100%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">B1 2323pt → A2ライン:2600pt
+     (あと277pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:89%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+320→昇級!</span><span class="pt-rank-item">2着+128</span><span class="pt-rank-item">3着+80</span><span class="pt-rank-item">4着+48</span><span class="pt-rank-item">5着+32</span></div>
+<div class="badges"><span class="badge badge-bio">★5割復帰</span></div>
+</div><div class="horse-row san">
+<div class="horse-head"><span class="imp imp-san">△</span><span class="horse-name" style="margin:0">12番&nbsp; <a href="https://db.netkeiba.com/horse/2019105655" target="_blank" style="color:inherit;text-decoration:none">ビップソリオ</a></span></div>
+<div class="horse-sub">セ7歳  格:B2</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>66%</b>  (接戦0.6s(+9) 上がり上位38%(+6) 複勝80% 平均2.8着 / 1人気(先行割引) / イン差し / 5割復帰 / 先行危険)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-high" style="width:100%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">B2 2676pt → B1ライン:2900pt
+     (あと224pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:92%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+320→昇級!</span><span class="pt-rank-item">2着+128</span><span class="pt-rank-item">3着+80</span><span class="pt-rank-item">4着+48</span><span class="pt-rank-item">5着+32</span></div>
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span><span class="badge badge-in">イン差し(100%)</span><span class="badge badge-bio">★5割復帰</span></div>
+</div>
+</div>
+<div class="race-block">
+<div class="race-header">ファイナルアンサー賞 出馬表 | 2026年7月31日 川崎12R 地方競馬レース情報 - netkeiba (1500m C1 11頭)</div>
+<div class="race-kuzure-bar kuzure-bar-mid">⚖️ 中間予想 (先行4人) — 本命+穴 両にらみ</div><div style="padding:6px 12px;font-size:12px;background:#fffde7;border-bottom:1px solid #ffe082;color:#5d4037">【印】◎ 9番ブラッドライン　○ 8番ヴィヴィッドムーン　△ 2番ボルドーダゲール 5番ホシニネガイヲ&nbsp;&nbsp;<span style="color:#888">(崩れ度:4人  ⚡ハイペース警戒)</span></div><div class="race-pt-row">付与ポイント: 1着+200pt / 2着+80pt / 3着+50pt / 4着+30pt / 5着+20pt</div>
+<div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">1番&nbsp; <a href="https://db.netkeiba.com/horse/2021101428" target="_blank" style="color:inherit;text-decoration:none">タキ</a></span></div>
+<div class="horse-sub">牡5歳  格:C1</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>8%</b></span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:17%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 808pt → B3ライン:1100pt
+     (あと292pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:73%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+200</span><span class="pt-rank-item">2着+80</span><span class="pt-rank-item">3着+50</span><span class="pt-rank-item">4着+30</span><span class="pt-rank-item">5着+20</span></div>
+
+</div><div class="horse-row san">
+<div class="horse-head"><span class="imp imp-san">△</span><span class="horse-name" style="margin:0">2番&nbsp; <a href="https://db.netkeiba.com/horse/2022109026" target="_blank" style="color:inherit;text-decoration:none">ボルドーダゲール</a></span></div>
+<div class="horse-sub">牡4歳  格:C1</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>8%</b>  (力負け1.6s(-5) 上がり上位36%(+6))</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:17%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 707pt → B3ライン:900pt
+     (あと193pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:78%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+200→昇級!</span><span class="pt-rank-item">2着+80</span><span class="pt-rank-item">3着+50</span><span class="pt-rank-item">4着+30</span><span class="pt-rank-item">5着+20</span></div>
+
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">3番&nbsp; <a href="https://db.netkeiba.com/horse/2023103346" target="_blank" style="color:inherit;text-decoration:none">カズヤ</a></span></div>
+<div class="horse-sub">牡3歳  格:C1</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>35%</b>  (力負け1.9s(-5) 上がり最下位10%(-6) 複勝44% / 1人気(先行割引) / 先行危険)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-high" style="width:77%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 580pt → B3ライン:800pt
+     (あと220pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:72%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+200</span><span class="pt-rank-item">2着+80</span><span class="pt-rank-item">3着+50</span><span class="pt-rank-item">4着+30</span><span class="pt-rank-item">5着+20</span></div>
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">4番&nbsp; <a href="https://db.netkeiba.com/horse/2019103469" target="_blank" style="color:inherit;text-decoration:none">エイシントゥラン</a></span></div>
+<div class="horse-sub">牝7歳  格:C1</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>8%</b>  (力負け1.7s(-5) 上がり最下位1%(-6) / 5人気)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:17%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 1601pt → B3ライン:1700pt
+     (あと99pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:94%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+200→昇級!</span><span class="pt-rank-item">2着+80</span><span class="pt-rank-item">3着+50</span><span class="pt-rank-item">4着+30</span><span class="pt-rank-item">5着+20</span></div>
+
+</div><div class="horse-row san">
+<div class="horse-head"><span class="imp imp-san">△</span><span class="horse-name" style="margin:0">5番&nbsp; <a href="https://db.netkeiba.com/horse/2022101386" target="_blank" style="color:inherit;text-decoration:none">ホシニネガイヲ</a></span></div>
+<div class="horse-sub">牝4歳  格:C1</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>8%</b>  (上がり上位34%(+6))</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:17%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 749pt → B3ライン:900pt
+     (あと151pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:83%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+200→昇級!</span><span class="pt-rank-item">2着+80</span><span class="pt-rank-item">3着+50</span><span class="pt-rank-item">4着+30</span><span class="pt-rank-item">5着+20</span></div>
+
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">6番&nbsp; <a href="https://db.netkeiba.com/horse/2022101302" target="_blank" style="color:inherit;text-decoration:none">ノッテストラータ</a></span></div>
+<div class="horse-sub">牝4歳  格:C1</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>6%</b>  (力負け1.6s(-5) 上がり上位22%(+6) / 2人気(先行割引) / 先行危険)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:13%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 883pt → B3ライン:900pt
+     (あと17pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-reach" style="width:98%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+200→昇級!</span><span class="pt-rank-item breakthrough">2着+80→昇級!</span><span class="pt-rank-item breakthrough">3着+50→昇級!</span><span class="pt-rank-item breakthrough">4着+30→昇級!</span><span class="pt-rank-item breakthrough">5着+20→昇級!</span></div>
+<div class="badges"><span class="badge badge-reach-warn">⚠リーチ圏(あと17pt)</span><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">7番&nbsp; <a href="https://db.netkeiba.com/horse/2022102527" target="_blank" style="color:inherit;text-decoration:none">バースフラワー</a></span></div>
+<div class="horse-sub">牝4歳  格:C1</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>8%</b>  (力負け1.8s(-5) 上がり最下位1%(-6))</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:17%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 607pt → B3ライン:900pt
+     (あと293pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:67%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+200</span><span class="pt-rank-item">2着+80</span><span class="pt-rank-item">3着+50</span><span class="pt-rank-item">4着+30</span><span class="pt-rank-item">5着+20</span></div>
+
+</div><div class="horse-row niban">
+<div class="horse-head"><span class="imp imp-niban">○</span><span class="horse-name" style="margin:0">8番&nbsp; <a href="https://db.netkeiba.com/horse/2022101633" target="_blank" style="color:inherit;text-decoration:none">ヴィヴィッドムーン</a></span></div>
+<div class="horse-sub">牝4歳  格:C1</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>32%</b>  (上がり最下位17%(-6) 複勝40% / 3人気(先行割引) / イン差し / 先行危険)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-high" style="width:71%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 634pt → B3ライン:900pt
+     (あと266pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-safe" style="width:70%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+200</span><span class="pt-rank-item">2着+80</span><span class="pt-rank-item">3着+50</span><span class="pt-rank-item">4着+30</span><span class="pt-rank-item">5着+20</span></div>
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span><span class="badge badge-in">イン差し(50%)</span></div>
+</div><div class="horse-row hon">
+<div class="horse-head"><span class="imp imp-hon">◎</span><span class="horse-name" style="margin:0">9番&nbsp; <a href="https://db.netkeiba.com/horse/2019101003" target="_blank" style="color:inherit;text-decoration:none">ブラッドライン</a></span></div>
+<div class="horse-sub">牡7歳  格:C1</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>17%</b>  (力負け2.3s(-5) 上がり最下位19%(-6) 複勝20% / イン差し / 5割復帰)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-mid" style="width:37%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 1452pt → B3ライン:1700pt
+     (あと248pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:85%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item">1着+200</span><span class="pt-rank-item">2着+80</span><span class="pt-rank-item">3着+50</span><span class="pt-rank-item">4着+30</span><span class="pt-rank-item">5着+20</span></div>
+<div class="badges"><span class="badge badge-in">イン差し(94%)</span><span class="badge badge-bio">★5割復帰</span></div>
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">10番&nbsp; <a href="https://db.netkeiba.com/horse/2020100130" target="_blank" style="color:inherit;text-decoration:none">エスジースパークル</a></span></div>
+<div class="horse-sub">牝6歳  格:C1</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>8%</b>  (力負け1.6s(-5) 上がり下位31%(-3) / 6人気)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-low" style="width:17%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 1234pt → B3ライン:1400pt
+     (あと166pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:88%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+200→昇級!</span><span class="pt-rank-item">2着+80</span><span class="pt-rank-item">3着+50</span><span class="pt-rank-item">4着+30</span><span class="pt-rank-item">5着+20</span></div>
+
+</div><div class="horse-row">
+<div class="horse-head"><span class="imp imp-muji">―</span><span class="horse-name" style="margin:0">11番&nbsp; <a href="https://db.netkeiba.com/horse/2022106024" target="_blank" style="color:inherit;text-decoration:none">セラード</a></span></div>
+<div class="horse-sub">牝4歳  格:C1</div>
+<div class="fuku-est">
+  <span>推定複勝率 <b>23%</b>  (力負け2.2s(-5) 上がり最下位8%(-6) 複勝30% / 4人気 / 先行危険)</span>
+  <div class="fuku-bar-outer"><div class="fuku-bar-inner fuku-bar-high" style="width:51%"></div></div>
+</div>
+
+<div class="pt-bar-wrap">
+  <div class="pt-bar-label">C1 805pt → B3ライン:900pt
+     (あと95pt)
+  </div>
+  <div class="pt-bar-outer"><div class="pt-bar-inner bar-warn" style="width:89%"></div></div>
+</div>
+<div class="pt-ranks"><span class="pt-rank-item breakthrough">1着+200→昇級!</span><span class="pt-rank-item">2着+80</span><span class="pt-rank-item">3着+50</span><span class="pt-rank-item">4着+30</span><span class="pt-rank-item">5着+20</span></div>
+<div class="badges"><span class="badge badge-kuzure">⚡先行危険(ハイペース)</span></div>
+</div>
+</div>
+<div class="footer">Generated by race_judge_nar.py</div>
+</div>
+</body>
+</html>
