@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>シグナル学習レポート</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, 'Hiragino Sans', sans-serif;
+       background: #fff; color: #111; max-width: 680px;
+       margin: 0 auto; padding: 20px 16px 48px; line-height: 1.6; }
+h1 { font-size: 18px; font-weight: 800; border-bottom: 2px solid #111;
+      padding-bottom: 8px; margin-bottom: 4px; }
+.period { font-size: 12px; color: #888; margin-bottom: 20px; }
+h2 { font-size: 14px; font-weight: 700; margin: 20px 0 8px;
+      padding: 4px 10px; border-left: 4px solid #1a3a6b; background: #f8f8f8; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th { background: #1a3a6b; color: #fff; padding: 6px 10px; text-align: left; }
+td { padding: 6px 10px; border-bottom: 1px solid #f0f0f0; }
+.lift-high { color: #b71c1c; font-weight: 700; }
+.lift-mid  { color: #e65100; }
+.lift-low  { color: #9e9e9e; }
+.baken-summary { background: #f0f7ff; border: 1px solid #1a3a6b33;
+                  border-radius: 6px; padding: 12px 16px; margin-top: 8px; }
+.bs-row { display: flex; justify-content: space-between;
+           padding: 4px 0; border-bottom: 1px solid #e8f0ff; }
+.bs-row:last-child { border-bottom: none; }
+.roi-pos { color: #1b5e20; font-weight: 700; }
+.roi-neg { color: #b71c1c; font-weight: 700; }
+.note { font-size: 11px; color: #aaa; margin-top: 6px; }
+</style>
+</head>
+<body>
+<h1>📊 シグナル学習レポート</h1>
+<p class="period">集計期間: 2026/07/13 〜 2026/08/10</p>
+
+<h2>シグナル別 複勝率 / LIFT</h2>
+<table>
+<thead><tr><th>シグナル</th><th>N</th><th>複勝率</th><th>LIFT</th></tr></thead>
+<tbody><tr><td>LINE組み合わせ</td><td style="text-align:right">2</td><td style="text-align:right">50.0%</td><td class="lift-high" style="text-align:right">1.86x</td></tr><tr><td>LINE×7+人気</td><td style="text-align:right">2</td><td style="text-align:right">50.0%</td><td class="lift-high" style="text-align:right">6.12x</td></tr><tr><td>全馬ベースライン</td><td style="text-align:right">1,315</td><td style="text-align:right">26.9%</td><td class="lift-low" style="text-align:right">1.00x</td></tr><tr><td>7+人気ベースライン</td><td style="text-align:right">612</td><td style="text-align:right">8.2%</td><td class="lift-low" style="text-align:right">1.00x</td></tr></tbody>
+</table>
+<p class="note">※LIFT = 該当シグナルの複勝率 / ベースライン複勝率（全馬または7+人気帯）</p>
+
+<h2>実際の買い目成績 (nar_seiseki.csv)</h2>
+<div class="baken-summary"><div class="bs-row"><span>総買い目</span><span>7点</span></div><div class="bs-row"><span>回収率</span><span class="roi-neg">0.0%</span></div><div class="bs-row"><span>損益</span><span class="roi-neg">-700円</span></div></div>
+</body>
+</html>
